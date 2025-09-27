@@ -6,6 +6,7 @@ import SearchIcon from './icons/SearchIcon';
 import AccountDetailModal from './AccountDetailModal';
 import { getAccountExplanation } from '../services/geminiService';
 import AccordionItem from './AccordionItem';
+import ScrollAnimationWrapper from './ScrollAnimationWrapper';
 
 const ChartOfAccountsPage: React.FC = () => {
   const { language, t } = useLanguage();
@@ -65,24 +66,24 @@ const ChartOfAccountsPage: React.FC = () => {
   return (
     <>
       <div className="container mx-auto px-6 py-12">
-        <div className="max-w-4xl mx-auto text-center">
+        <ScrollAnimationWrapper className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{t('chartOfAccountsTitle')}</h1>
           <p className="mt-2 text-gray-600 dark:text-gray-300">{t('chartOfAccountsSubtitle')}</p>
-        </div>
+        </ScrollAnimationWrapper>
 
         <div className="max-w-4xl mx-auto mt-8">
             <div className="max-w-md mx-auto mb-8">
                 
             </div>
 
-          <div className="bg-white dark:bg-dark-card p-6 rounded-xl shadow-md mb-8">
+          <ScrollAnimationWrapper className="bg-white dark:bg-dark-card p-6 rounded-xl shadow-md mb-8">
             <h2 className="text-xl font-semibold mb-2 text-primary-dark">{t('chartIntroTitle')}</h2>
             <p className="text-gray-700 dark:text-gray-300 text-sm">
               {t('chartIntroText')}
             </p>
-          </div>
+          </ScrollAnimationWrapper>
 
-          <div className="relative mb-8">
+          <ScrollAnimationWrapper className="relative mb-8">
             <div className="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center pl-3 pointer-events-none">
               <SearchIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
             </div>
@@ -93,20 +94,21 @@ const ChartOfAccountsPage: React.FC = () => {
               placeholder={t('searchPlaceholder')}
               className="w-full p-4 ltr:pl-10 rtl:pr-10 bg-gray-50 dark:bg-dark-bg border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors dark:text-white"
             />
-          </div>
+          </ScrollAnimationWrapper>
 
           <div className="space-y-4">
             {hasResults ? (
-              filteredData.map(classInfo => (
-                <AccordionItem
-                  key={classInfo.code}
-                  classInfo={classInfo}
-                  isOpen={searchQuery ? true : openAccordion === classInfo.code}
-                  onToggle={() => handleToggle(classInfo.code)}
-                  lang={language}
-                  searchTerm={searchQuery}
-                  onAccountClick={handleAccountClick}
-                />
+              filteredData.map((classInfo, index) => (
+                <ScrollAnimationWrapper key={classInfo.code} staggerIndex={index}>
+                  <AccordionItem
+                    classInfo={classInfo}
+                    isOpen={searchQuery ? true : openAccordion === classInfo.code}
+                    onToggle={() => handleToggle(classInfo.code)}
+                    lang={language}
+                    searchTerm={searchQuery}
+                    onAccountClick={handleAccountClick}
+                  />
+                </ScrollAnimationWrapper>
               ))
             ) : (
               <div className="text-center p-8 bg-white dark:bg-dark-card rounded-lg">

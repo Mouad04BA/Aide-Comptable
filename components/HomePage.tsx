@@ -6,6 +6,7 @@ import BookOpenIcon from './icons/BookOpenIcon';
 import SparklesIcon from './icons/SparklesIcon';
 import DocumentTextIcon from './icons/DocumentTextIcon';
 import UpcomingDeadlineReminder from './UpcomingDeadlineReminder';
+import ScrollAnimationWrapper from './ScrollAnimationWrapper';
 
 interface HomePageProps {
   onPageChange: (page: Page) => void;
@@ -45,7 +46,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
         
         {/* Hero Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-center md:text-left rtl:md:text-right">
+            <ScrollAnimationWrapper className="text-center md:text-left rtl:md:text-right">
                 <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight">
                 {t('homeTitle')} <span className="text-primary-dark">{t('homeTitleHighlight')}</span>
                 </h1>
@@ -60,44 +61,50 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                     {t('homeStartLearning')}
                 </button>
                 </div>
-            </div>
+            </ScrollAnimationWrapper>
              <div className="hidden md:flex justify-center items-center">
                 
             </div>
         </div>
         
         {/* Upcoming Deadline Reminder */}
-        <div className="mt-16 max-w-3xl mx-auto">
+        <ScrollAnimationWrapper className="mt-16 max-w-3xl mx-auto">
             <UpcomingDeadlineReminder onNavigate={() => onPageChange(Page.Taxes)} />
-        </div>
+        </ScrollAnimationWrapper>
         
         {/* Features Section */}
         <div className="mt-16 md:mt-24">
-            <div className="text-center">
+            <ScrollAnimationWrapper className="text-center">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{t('homeFeaturesTitle')}</h2>
-            </div>
+            </ScrollAnimationWrapper>
             <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <FeatureCard 
-                    icon={<BookOpenIcon />}
-                    title={t('featureCoursesTitle')}
-                    description={t('featureCoursesDesc')}
-                    onCtaClick={() => onPageChange(Page.Course)}
-                    ctaText={t('featureButtonText')}
-                />
-                 <FeatureCard 
-                    icon={<SparklesIcon />}
-                    title={t('featureSimulatorTitle')}
-                    description={t('featureSimulatorDesc')}
-                    onCtaClick={() => onPageChange(Page.Simulator)}
-                    ctaText={t('featureButtonText')}
-                />
-                 <FeatureCard 
-                    icon={<DocumentTextIcon />}
-                    title={t('featureResourcesTitle')}
-                    description={t('featureResourcesDesc')}
-                    onCtaClick={() => onPageChange(Page.Resources)}
-                    ctaText={t('featureButtonText')}
-                />
+                <ScrollAnimationWrapper staggerIndex={0}>
+                  <FeatureCard 
+                      icon={<BookOpenIcon />}
+                      title={t('featureCoursesTitle')}
+                      description={t('featureCoursesDesc')}
+                      onCtaClick={() => onPageChange(Page.Course)}
+                      ctaText={t('featureButtonText')}
+                  />
+                </ScrollAnimationWrapper>
+                <ScrollAnimationWrapper staggerIndex={1}>
+                  <FeatureCard 
+                      icon={<SparklesIcon />}
+                      title={t('featureSimulatorTitle')}
+                      description={t('featureSimulatorDesc')}
+                      onCtaClick={() => onPageChange(Page.Simulator)}
+                      ctaText={t('featureButtonText')}
+                  />
+                </ScrollAnimationWrapper>
+                <ScrollAnimationWrapper staggerIndex={2}>
+                  <FeatureCard 
+                      icon={<DocumentTextIcon />}
+                      title={t('featureResourcesTitle')}
+                      description={t('featureResourcesDesc')}
+                      onCtaClick={() => onPageChange(Page.Resources)}
+                      ctaText={t('featureButtonText')}
+                  />
+                </ScrollAnimationWrapper>
             </div>
         </div>
 

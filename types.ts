@@ -7,6 +7,7 @@ export enum Page {
   ChartOfAccounts = 'ChartOfAccounts',
   Taxes = 'Taxes',
   Resources = 'Resources',
+  VideoStudio = 'VideoStudio',
 }
 
 export interface JournalEntry {

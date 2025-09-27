@@ -6,6 +6,7 @@ import UserIcon from './icons/UserIcon';
 import UsersIcon from './icons/UsersIcon';
 import CalendarIcon from './icons/CalendarIcon';
 import FiscalCalendar from './FiscalCalendar';
+import ScrollAnimationWrapper from './ScrollAnimationWrapper';
 
 type Tab = 'tva' | 'is' | 'ir' | 'cnss' | 'calendar';
 
@@ -313,10 +314,10 @@ const TaxesPage: React.FC = () => {
 
   return (
     <div className="container mx-auto px-6 py-12">
-      <div className="max-w-4xl mx-auto text-center mb-10">
+      <ScrollAnimationWrapper className="max-w-4xl mx-auto text-center mb-10">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{t('taxesTitle')}</h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300">{t('taxesSubtitle')}</p>
-      </div>
+      </ScrollAnimationWrapper>
       
       <div className="max-w-sm mx-auto mb-10">
           
@@ -340,29 +341,33 @@ const TaxesPage: React.FC = () => {
           ))}
         </div>
         
-        <div>
+        <ScrollAnimationWrapper key={activeTab}>
             {renderContent()}
-        </div>
+        </ScrollAnimationWrapper>
       </div>
 
       <div className="max-w-4xl mx-auto mt-16">
-        <div className="text-center mb-8">
+        <ScrollAnimationWrapper className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t('taxPortalsTitle')}</h2>
             <p className="mt-2 text-gray-600 dark:text-gray-300">{t('taxPortalsSubtitle')}</p>
-        </div>
+        </ScrollAnimationWrapper>
         <div className="grid md:grid-cols-2 gap-8">
-            <TaxLinkCard
-                title={t('simplCombinedTitle')}
-                description={t('simplCombinedDesc')}
-                href="https://www.tax.gov.ma/wps/portal/DGI/Je-declare-et-je-paie-en-ligne/!/"
-                linkText={t('portalLinkText')}
-            />
-             <TaxLinkCard
-                title={t('damancomTitle')}
-                description={t('damancomDesc')}
-                href="https://www.damancom.ma/"
-                linkText={t('portalLinkText')}
-            />
+            <ScrollAnimationWrapper staggerIndex={0}>
+              <TaxLinkCard
+                  title={t('simplCombinedTitle')}
+                  description={t('simplCombinedDesc')}
+                  href="https://www.tax.gov.ma/wps/portal/DGI/Je-declare-et-je-paie-en-ligne/!/"
+                  linkText={t('portalLinkText')}
+              />
+            </ScrollAnimationWrapper>
+            <ScrollAnimationWrapper staggerIndex={1}>
+              <TaxLinkCard
+                  title={t('damancomTitle')}
+                  description={t('damancomDesc')}
+                  href="https://www.damancom.ma/"
+                  linkText={t('portalLinkText')}
+              />
+            </ScrollAnimationWrapper>
         </div>
       </div>
 

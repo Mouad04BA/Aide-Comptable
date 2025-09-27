@@ -20,9 +20,9 @@ const MainContact: React.FC<{ href: string; icon: React.FC<any>; label: string; 
         <div className={`flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-lg ${iconBgClass}`}>
             <Icon className={`w-8 h-8 ${iconColorClass}`} />
         </div>
-        <div className="ml-4 rtl:mr-4 text-left rtl:text-right min-w-0">
+        <div className="ml-4 rtl:mr-4 text-left rtl:text-right">
             <p className="font-bold text-gray-800 dark:text-white">{label}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors break-words">{subLabel}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors">{subLabel}</p>
         </div>
     </a>
 );

@@ -41,6 +41,11 @@ export const translations: Translations = {
     fr: "Ressources",
     en: "Resources",
   },
+  navVideoStudio: {
+    ar: "استوديو الفيديو",
+    fr: "Studio Vidéo",
+    en: "Video Studio",
+  },
   changeLanguage: {
     ar: "تغيير اللغة",
     fr: "Changer de langue",
@@ -884,8 +889,3 @@ export const translations: Translations = {
     en: "Incorrect.",
   },
   themeToggleLabel: {
-    ar: "المظهر",
-    fr: "Thème",
-    en: "Theme",
-  },
-};

@@ -3,6 +3,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { courseData } from '../data/courseData';
 import { Lesson } from '../types';
 import LessonView from './LessonView';
+import ScrollAnimationWrapper from './ScrollAnimationWrapper';
 
 const LessonCard: React.FC<{ lesson: Lesson; onSelect: () => void; isCompleted: boolean; }> = ({ lesson, onSelect, isCompleted }) => {
   const { language, t } = useLanguage();
@@ -94,12 +95,12 @@ const CoursePage: React.FC = () => {
   return (
     <div className="container mx-auto px-6 py-12">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
+        <ScrollAnimationWrapper className="text-center mb-12">
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{t('courseListTitle')}</h1>
             <p className="mt-2 text-gray-600 dark:text-gray-300">{t('courseListSubtitle')}</p>
-        </div>
+        </ScrollAnimationWrapper>
         
-        <div className="mb-10">
+        <ScrollAnimationWrapper className="mb-10">
           <div className="flex justify-between items-center mb-2">
             <h2 className="text-md font-semibold text-gray-700 dark:text-gray-300">
                 {t('courseProgress').replace('{completed}', completedCount.toString()).replace('{total}', totalLessons.toString())}
@@ -116,16 +117,17 @@ const CoursePage: React.FC = () => {
                   role="progressbar"
               ></div>
           </div>
-        </div>
+        </ScrollAnimationWrapper>
         
         <div className="grid md:grid-cols-2 gap-8">
-          {courseData.map(lesson => (
-            <LessonCard 
-                key={lesson.id} 
-                lesson={lesson} 
-                onSelect={() => handleSelectLesson(lesson.id)} 
-                isCompleted={completedLessons.has(lesson.id)}
-            />
+          {courseData.map((lesson, index) => (
+            <ScrollAnimationWrapper key={lesson.id} staggerIndex={index % 2}>
+              <LessonCard 
+                  lesson={lesson} 
+                  onSelect={() => handleSelectLesson(lesson.id)} 
+                  isCompleted={completedLessons.has(lesson.id)}
+              />
+            </ScrollAnimationWrapper>
           ))}
         </div>
       </div>

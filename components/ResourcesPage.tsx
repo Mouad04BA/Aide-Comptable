@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import ScrollAnimationWrapper from './ScrollAnimationWrapper';
 
 interface ResourceCardProps {
   title: string;
@@ -9,7 +10,7 @@ interface ResourceCardProps {
 }
 
 const ResourceCard: React.FC<ResourceCardProps> = ({ title, description, linkText, href }) => (
-  <div className="bg-white dark:bg-dark-card p-6 rounded-xl shadow-md flex flex-col">
+  <div className="bg-white dark:bg-dark-card p-6 rounded-xl shadow-md flex flex-col h-full">
     <h3 className="text-xl font-bold mb-2 text-primary-dark">{title}</h3>
     <p className="text-gray-600 dark:text-gray-400 text-sm flex-grow mb-4">{description}</p>
     <a
@@ -27,69 +28,37 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ title, description, linkTex
 const ResourcesPage: React.FC = () => {
   const { t } = useLanguage();
 
+  const resources = [
+    { key: 'Cgi', href: "https://www.tax.gov.ma/wps/portal/DGI/Documentation/!" },
+    { key: 'Circulars', href: "https://www.tax.gov.ma/wps/portal/DGI/Documentation/Notes-circulaires" },
+    { key: 'Cnss', href: "https://www.cnss.ma/fr/content/guides" },
+    { key: 'Oec', href: "https://www.oec.ma/" },
+    { key: 'Bo', href: "http://www.sgg.gov.ma/BulletinOfficiel.aspx" },
+    { key: 'Ompic', href: "https://www.ompic.ma/" },
+    { key: 'OmpicCreation', href: "https://www.ompic.ma/sites/default/files/guide_creation_entreprise.pdf" },
+    { key: 'Procedure', href: "http://www.sgg.gov.ma/Loi/details/208_Code-de-commerce#Livre-V" },
+    { key: 'Teledeclaration', href: "https://www.tax.gov.ma/wps/wcm/connect/dgi/b593a10a-6b4f-4b07-82a5-a50d6c0a7e6e/guide+simpl+is.pdf?MOD=AJPERES" },
+  ];
+
   return (
     <div className="container mx-auto px-6 py-12">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12">
+        <ScrollAnimationWrapper className="text-center mb-12">
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{t('resourcesTitle')}</h1>
             <p className="mt-2 text-gray-600 dark:text-gray-300">{t('resourcesSubtitle')}</p>
-        </div>
+        </ScrollAnimationWrapper>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ResourceCard 
-                title={t('resourceCgiTitle')}
-                description={t('resourceCgiDesc')}
-                linkText={t('resourceCgiLink')}
-                href="https://www.tax.gov.ma/wps/portal/DGI/Documentation/!"
-            />
-            <ResourceCard 
-                title={t('resourceCircularsTitle')}
-                description={t('resourceCircularsDesc')}
-                linkText={t('resourceCircularsLink')}
-                href="https://www.tax.gov.ma/wps/portal/DGI/Documentation/Notes-circulaires"
-            />
-            <ResourceCard 
-                title={t('resourceCnssTitle')}
-                description={t('resourceCnssDesc')}
-                linkText={t('resourceCnssLink')}
-                href="https://www.cnss.ma/fr/content/guides"
-            />
-             <ResourceCard 
-                title={t('resourceOecTitle')}
-                description={t('resourceOecDesc')}
-                linkText={t('resourceOecLink')}
-                href="https://www.oec.ma/"
-            />
-             <ResourceCard 
-                title={t('resourceBoTitle')}
-                description={t('resourceBoDesc')}
-                linkText={t('resourceBoLink')}
-                href="http://www.sgg.gov.ma/BulletinOfficiel.aspx"
-            />
-             <ResourceCard 
-                title={t('resourceOmpicTitle')}
-                description={t('resourceOmpicDesc')}
-                linkText={t('resourceOmpicLink')}
-                href="https://www.ompic.ma/"
-            />
-            <ResourceCard 
-                title={t('resourceOmpicCreationTitle')}
-                description={t('resourceOmpicCreationDesc')}
-                linkText={t('resourceOmpicCreationLink')}
-                href="https://www.ompic.ma/sites/default/files/guide_creation_entreprise.pdf"
-            />
-            <ResourceCard 
-                title={t('resourceProcedureTitle')}
-                description={t('resourceProcedureDesc')}
-                linkText={t('resourceProcedureLink')}
-                href="http://www.sgg.gov.ma/Loi/details/208_Code-de-commerce#Livre-V"
-            />
-            <ResourceCard 
-                title={t('resourceTeledeclarationTitle')}
-                description={t('resourceTeledeclarationDesc')}
-                linkText={t('resourceTeledeclarationLink')}
-                href="https://www.tax.gov.ma/wps/wcm/connect/dgi/b593a10a-6b4f-4b07-82a5-a50d6c0a7e6e/guide+simpl+is.pdf?MOD=AJPERES"
-            />
+            {resources.map((res, index) => (
+              <ScrollAnimationWrapper key={res.key} staggerIndex={index % 3}>
+                <ResourceCard 
+                    title={t(`resource${res.key}Title`)}
+                    description={t(`resource${res.key}Desc`)}
+                    linkText={t(`resource${res.key}Link`)}
+                    href={res.href}
+                />
+              </ScrollAnimationWrapper>
+            ))}
         </div>
       </div>
     </div>
