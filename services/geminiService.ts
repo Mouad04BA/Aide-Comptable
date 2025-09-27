@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import { GeminiResponse, Language, AccountExplanationResponse } from '../types';
+import { GeminiResponse, Language, AccountExplanationResponse, FiscalAnalysisResponse, FiscalQuestionResponse } from '../types';
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
 
@@ -76,14 +76,12 @@ export const analyzeAccountingOperation = async (prompt: string, lang: Language)
     });
 
     const jsonString = response.text.trim();
-    // Basic validation before parsing
     if (!jsonString.startsWith('{') || !jsonString.endsWith('}')) {
         throw new Error("Invalid JSON response format from API");
     }
 
     const parsedData: GeminiResponse = JSON.parse(jsonString);
 
-    // Further validation to ensure the parsed data matches our expected structure.
     if (!parsedData.journal_entries || !parsedData.explanation) {
         throw new Error("Parsed JSON is missing required fields.");
     }
@@ -94,6 +92,148 @@ export const analyzeAccountingOperation = async (prompt: string, lang: Language)
     console.error("Error calling or parsing Gemini API response:", error);
     throw new Error("Failed to get a valid analysis from the AI service.");
   }
+};
+
+
+const getFiscalSystemInstruction = (lang: Language): string => {
+  const instructions = {
+    ar: "أنت خبير في القانون الضريبي المغربي (المدونة العامة للضرائب - CGI). دورك هو تحليل عملية أو نفقة من منظور ضريبة الشركات (IS). حدد ما إذا كانت العملية تؤدي إلى 'إعادة إدماج' (Réintégration)، 'خصم' (Déduction)، أو 'لا شيء للإبلاغ عنه' (Rien à signaler). قدم شرحاً واضحاً للمنطق، والأهم من ذلك، قدم دليلاً محدداً من المدونة العامة للضرائب المغربية للسنة الحالية أو 'مذكرة دورية' ذات صلة. قم بالرد فقط بكائن JSON يطابق المخطط المقدم وباللغة العربية.",
+    fr: "Vous êtes un expert en droit fiscal marocain (Code Général des Impôts - CGI). Votre rôle est d'analyser une opération ou une charge du point de vue de l'Impôt sur les Sociétés (IS). Déterminez si l'opération entraîne une 'Réintégration', une 'Déduction', ou 'Rien à signaler'. Fournissez une explication claire du raisonnement et, de manière cruciale, fournissez une référence spécifique du CGI marocain de l'année en cours ou d'une 'Note Circulaire' pertinente comme preuve. Répondez UNIQUEMENT avec un objet JSON correspondant au schéma fourni et en français.",
+    en: "You are an expert in Moroccan tax law (Code Général des Impôts - CGI). Your role is to analyze an operation or expense from a Corporate Tax (IS) perspective. Determine if the operation leads to a 'Réintégration' (add-back), a 'Déduction' (deduction), or 'Rien à signaler' (nothing to report). Provide a clear explanation of the reasoning and, crucially, provide a specific reference from the current year's Moroccan CGI or a relevant 'Note Circulaire' as proof. Respond ONLY with a JSON object matching the provided schema and in English."
+  };
+  return instructions[lang];
+};
+
+const getFiscalSchema = (lang: Language) => {
+  const descriptions = {
+    ar: {
+      traitement: "المعالجة الضريبية: 'Réintégration'، 'Déduction'، أو 'Rien à signaler'.",
+      explication: "شرح مفصل للمنطق الضريبي وراء المعالجة.",
+      preuve: "الدليل القانوني، مع ذكر المادة المحددة من المدونة العامة للضرائب أو المذكرة الدورية."
+    },
+    fr: {
+      traitement: "Le traitement fiscal : 'Réintégration', 'Déduction', ou 'Rien à signaler'.",
+      explication: "Une explication détaillée de la logique fiscale derrière le traitement.",
+      preuve: "La preuve légale, citant l'article spécifique du CGI ou la note circulaire."
+    },
+    en: {
+      traitement: "The fiscal treatment: 'Réintégration', 'Déduction', or 'Rien à signaler'.",
+      explication: "A detailed explanation of the fiscal logic behind the treatment.",
+      preuve: "The legal proof, citing the specific article from the CGI or the circular note."
+    }
+  };
+  const d = descriptions[lang];
+  return {
+    type: Type.OBJECT,
+    properties: {
+      traitement: { type: Type.STRING, description: d.traitement },
+      explication: { type: Type.STRING, description: d.explication },
+      preuve: { type: Type.STRING, description: d.preuve },
+    },
+    required: ["traitement", "explication", "preuve"]
+  };
+};
+
+export const analyzeFiscalOperation = async (prompt: string, lang: Language): Promise<FiscalAnalysisResponse> => {
+  const systemInstruction = getFiscalSystemInstruction(lang);
+  const schema = getFiscalSchema(lang);
+  
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: prompt,
+      config: {
+        systemInstruction: systemInstruction,
+        responseMimeType: "application/json",
+        responseSchema: schema,
+      },
+    });
+
+    const jsonString = response.text.trim();
+    const parsedData: FiscalAnalysisResponse = JSON.parse(jsonString);
+
+    if (!parsedData.traitement || !parsedData.explication || !parsedData.preuve) {
+        throw new Error("Parsed JSON from fiscal analysis is missing required fields.");
+    }
+    
+    // Validate the 'traitement' field
+    const validTraitements = ['Réintégration', 'Déduction', 'Rien à signaler'];
+    if (!validTraitements.includes(parsedData.traitement)) {
+      // Fallback or error if the model returns an unexpected value
+      console.warn(`Unexpected fiscal treatment value: ${parsedData.traitement}. Defaulting to 'Rien à signaler'.`);
+      parsedData.traitement = 'Rien à signaler';
+    }
+
+
+    return parsedData;
+  } catch (error) {
+    console.error("Error calling or parsing Gemini API response for fiscal analysis:", error);
+    throw new Error("Failed to get a valid fiscal analysis from the AI service.");
+  }
+};
+
+const getFiscalQASystemInstruction = (lang: Language): string => {
+  const instructions = {
+    ar: "أنت خبير في القانون الضريبي المغربي (المدونة العامة للضرائب - CGI). دورك هو الإجابة على أسئلة محددة حول القواعد الضريبية. قدم شرحاً واضحاً ومفصلاً، واستشهد بالمقالات ذات الصلة من المدونة العامة للضرائب أو المذكرات الدورية كمراجع. قم بالرد فقط بكائن JSON يطابق المخطط المقدم وباللغة العربية.",
+    fr: "Vous êtes un expert en droit fiscal marocain (Code Général des Impôts - CGI). Votre rôle est de répondre à des questions spécifiques sur les règles fiscales. Fournissez une explication claire et détaillée, et citez les articles pertinents du CGI ou des notes circulaires comme références. Répondez UNIQUEMENT avec un objet JSON correspondant au schéma fourni et en français.",
+    en: "You are an expert in Moroccan tax law (CGI). Your role is to answer specific questions about tax rules. Provide a clear, detailed explanation, and cite the relevant articles from the CGI or circular notes as references. Respond ONLY with a JSON object matching the provided schema and in English."
+  };
+  return instructions[lang];
+};
+
+const getFiscalQASchema = (lang: Language) => {
+  const descriptions = {
+    ar: {
+      explication: "شرح مفصل وواضح للقاعدة الضريبية المتعلقة بالسؤال.",
+      references: "المراجع القانونية، مع ذكر المواد المحددة من المدونة العامة للضرائب أو المذكرات الدورية."
+    },
+    fr: {
+      explication: "Une explication détaillée et claire de la règle fiscale concernant la question.",
+      references: "Les références légales, citant les articles spécifiques du CGI ou les notes circulaires."
+    },
+    en: {
+      explication: "A detailed and clear explanation of the tax rule concerning the question.",
+      references: "The legal references, citing the specific articles from the CGI or circular notes."
+    }
+  };
+  const d = descriptions[lang];
+  return {
+    type: Type.OBJECT,
+    properties: {
+      explication: { type: Type.STRING, description: d.explication },
+      references: { type: Type.STRING, description: d.references },
+    },
+    required: ["explication", "references"]
+  };
+};
+
+export const answerFiscalQuestion = async (prompt: string, lang: Language): Promise<FiscalQuestionResponse> => {
+    const systemInstruction = getFiscalQASystemInstruction(lang);
+    const schema = getFiscalQASchema(lang);
+
+    try {
+        const response = await ai.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: prompt,
+            config: {
+                systemInstruction: systemInstruction,
+                responseMimeType: "application/json",
+                responseSchema: schema,
+            },
+        });
+
+        const jsonString = response.text.trim();
+        const parsedData: FiscalQuestionResponse = JSON.parse(jsonString);
+
+        if (!parsedData.explication || !parsedData.references) {
+            throw new Error("Parsed JSON from fiscal Q&A is missing required fields.");
+        }
+        
+        return parsedData;
+    } catch (error) {
+        console.error("Error calling or parsing Gemini API response for fiscal Q&A:", error);
+        throw new Error("Failed to get a valid answer from the AI service.");
+    }
 };
 
 const getExplanationSystemInstruction = (lang: Language): string => {

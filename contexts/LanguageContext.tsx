@@ -12,12 +12,20 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() => {
+    // 1. Check for a language preference in local storage
     const storedLang = localStorage.getItem('language');
-    // Ensure the stored language is one of the valid options
     if (storedLang === 'ar' || storedLang === 'fr' || storedLang === 'en') {
       return storedLang;
     }
-    return 'ar'; // Default to Arabic
+
+    // 2. If not found, check the browser's language
+    const browserLang = navigator.language.split('-')[0]; // e.g., 'fr-FR' becomes 'fr'
+    if (browserLang === 'fr' || browserLang === 'en') {
+        return browserLang;
+    }
+    
+    // 3. Default to Arabic
+    return 'ar';
   });
 
   useEffect(() => {

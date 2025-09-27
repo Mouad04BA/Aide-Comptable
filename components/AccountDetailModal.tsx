@@ -57,7 +57,7 @@ const AccountDetailModal: React.FC<AccountDetailModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="bg-white dark:bg-dark-card rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-slide-in-up"
+        className="bg-white dark:bg-dark-card rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
         onClick={e => e.stopPropagation()}
       >
         <div className="sticky top-0 bg-white dark:bg-dark-card z-10 px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
@@ -87,7 +87,7 @@ const AccountDetailModal: React.FC<AccountDetailModalProps> = ({
           )}
           {error && <div className="text-center p-4 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-md">{error}</div>}
           {explanation && !isLoading && (
-            <div className="space-y-6 animate-fade-in">
+            <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-primary-dark">{t('explanationSectionTitle')}</h3>
                 <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{explanation.explanation}</p>

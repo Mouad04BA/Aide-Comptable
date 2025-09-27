@@ -8,6 +8,7 @@ import ChartOfAccountsPage from './components/ChartOfAccountsPage';
 import TaxesPage from './components/TaxesPage';
 import ResourcesPage from './components/ResourcesPage';
 import { LanguageProvider } from './contexts/LanguageContext';
+import BackgroundAnimation from './components/BackgroundAnimation';
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -30,35 +31,50 @@ const App: React.FC = () => {
   }, []);
 
   const renderPage = () => {
+    let pageComponent;
     switch (currentPage) {
       case Page.Course:
-        return <CoursePage />;
+        pageComponent = <CoursePage />;
+        break;
       case Page.Simulator:
-        return <SimulatorPage />;
+        pageComponent = <SimulatorPage />;
+        break;
       case Page.ChartOfAccounts:
-        return <ChartOfAccountsPage />;
+        pageComponent = <ChartOfAccountsPage />;
+        break;
       case Page.Taxes:
-        return <TaxesPage />;
+        pageComponent = <TaxesPage />;
+        break;
       case Page.Resources:
-        return <ResourcesPage />;
+        pageComponent = <ResourcesPage />;
+        break;
       case Page.Home:
       default:
-        return <HomePage onPageChange={handlePageChange} />;
+        pageComponent = <HomePage onPageChange={handlePageChange} />;
+        break;
     }
+     return (
+        <div className="animate-fade-in-up" key={currentPage}>
+            {pageComponent}
+        </div>
+    );
   };
 
   return (
     <LanguageProvider>
-      <div className="bg-light dark:bg-dark-bg min-h-screen text-gray-800 dark:text-dark-text font-sans transition-colors duration-300">
-        <Header 
-          currentPage={currentPage} 
-          onPageChange={handlePageChange} 
-          isDarkMode={isDarkMode} 
-          onThemeToggle={handleThemeToggle} 
-        />
-        <main>
-          {renderPage()}
-        </main>
+      <div className="min-h-screen bg-white dark:bg-dark-bg text-gray-800 dark:text-dark-text font-sans">
+        <BackgroundAnimation />
+        <div className="relative z-10 min-h-screen transition-colors duration-300">
+            <Header 
+              currentPage={currentPage} 
+              onPageChange={handlePageChange} 
+              isDarkMode={isDarkMode} 
+              onThemeToggle={handleThemeToggle} 
+            />
+            <main>
+              {renderPage()}
+            </main>
+        </div>
       </div>
     </LanguageProvider>
   );

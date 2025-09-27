@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { fiscalCalendarEvents, FiscalEvent } from '../data/fiscalCalendarData';
+import { fiscalCalendarEvents } from '../data/fiscalCalendarData';
+import { FiscalEvent } from '../types';
 
 const categoryColors: Record<string, string> = {
   TVA: 'bg-blue-500 border-blue-500',
@@ -84,7 +85,7 @@ const FiscalCalendar: React.FC = () => {
     d1.getDate() === d2.getDate();
 
   return (
-    <div className="bg-white dark:bg-dark-card p-4 sm:p-6 rounded-2xl shadow-lg animate-fade-in grid md:grid-cols-3 gap-6 calculator-card">
+    <div className="bg-white dark:bg-dark-card p-4 sm:p-6 rounded-2xl shadow-lg grid md:grid-cols-3 gap-6">
       <div className="md:col-span-2">
         <div className="flex justify-between items-center mb-4">
           <button onClick={handlePrevMonth} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">&larr;</button>

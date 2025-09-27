@@ -6,6 +6,7 @@ import UserIcon from './icons/UserIcon';
 import UsersIcon from './icons/UsersIcon';
 import CalendarIcon from './icons/CalendarIcon';
 import FiscalCalendar from './FiscalCalendar';
+import TaxesAnimation from './illustrations/TaxesAnimation';
 
 type Tab = 'tva' | 'is' | 'ir' | 'cnss' | 'calendar';
 
@@ -67,15 +68,27 @@ const TVACalculator = () => {
   ], [t]);
 
   return (
-    <div className="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-lg animate-fade-in calculator-card">
+    <div className="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-lg">
         <h2 className="text-2xl font-bold text-center mb-6 text-primary-dark">{t('tvaCalculatorTitle')}</h2>
         <div className="space-y-6">
             <InputGroup id="amount-ht" label={t('amountHTLabel')} value={amountHT} onChange={(e) => setAmountHT(e.target.value)} />
             <div>
-                <label htmlFor="tva-rate" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t('tvaRateLabel')}</label>
-                <select id="tva-rate" value={tvaRate} onChange={(e) => setTvaRate(parseFloat(e.target.value))} className="w-full p-3 bg-gray-50 dark:bg-dark-bg border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors dark:text-white">
-                    {tvaRates.map(rate => <option key={rate.value} value={rate.value}>{rate.label}</option>)}
-                </select>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">{t('tvaRateLabel')}</label>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    {tvaRates.map(rate => (
+                        <button
+                            key={rate.value}
+                            onClick={() => setTvaRate(rate.value)}
+                            className={`p-3 rounded-lg text-sm font-semibold transition-all duration-200 border-2 ${
+                                tvaRate === rate.value
+                                    ? 'bg-primary/20 border-primary text-primary-dark dark:bg-primary-dark/30 dark:border-primary-dark dark:text-white'
+                                    : 'bg-gray-50 border-gray-200 hover:border-primary dark:bg-dark-bg dark:border-gray-600 dark:hover:border-primary-dark'
+                            }`}
+                        >
+                            {rate.label}
+                        </button>
+                    ))}
+                </div>
             </div>
             <div className="border-t border-gray-200 dark:border-gray-700 my-6"></div>
             <div className="space-y-4 text-right rtl:text-left">
@@ -115,7 +128,7 @@ const ISCalculator = () => {
     }, [income, turnover, isNewCompany]);
 
     return (
-        <div className="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-lg animate-fade-in calculator-card">
+        <div className="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-lg">
             <h2 className="text-2xl font-bold text-center mb-6 text-primary-dark">{t('isCalculatorTitle')}</h2>
             <div className="space-y-6">
                 <InputGroup id="taxable-income" label={t('taxableIncomeLabel')} value={income} onChange={e => setIncome(e.target.value)} />
@@ -174,7 +187,7 @@ const IRCalculator = () => {
     }, [grossSalary, dependents]);
 
     return (
-        <div className="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-lg animate-fade-in calculator-card">
+        <div className="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-lg">
             <h2 className="text-2xl font-bold text-center mb-6 text-primary-dark">{t('irCalculatorTitle')}</h2>
             <div className="space-y-6">
                 <InputGroup id="gross-salary" label={t('grossMonthlySalaryLabel')} value={grossSalary} onChange={e => setGrossSalary(e.target.value)} />
@@ -231,7 +244,7 @@ const CNSSCalculator = () => {
     );
 
     return (
-        <div className="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-lg animate-fade-in calculator-card">
+        <div className="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-lg">
             <h2 className="text-2xl font-bold text-center mb-6 text-primary-dark">{t('cnssCalculatorTitle')}</h2>
             <div className="space-y-6">
                 <InputGroup id="cnss-salary" label={t('grossMonthlySalaryLabel')} value={grossSalary} onChange={e => setGrossSalary(e.target.value)} />
@@ -260,6 +273,22 @@ const CNSSCalculator = () => {
     );
 };
 
+const TaxLinkCard: React.FC<{ title: string; description: string; href: string; linkText: string; }> = ({ title, description, href, linkText }) => (
+  <div className="bg-white dark:bg-dark-card p-6 rounded-xl shadow-md flex flex-col">
+    <h3 className="text-xl font-bold mb-2 text-primary-dark">{title}</h3>
+    <p className="text-gray-600 dark:text-gray-400 text-sm flex-grow mb-4">{description}</p>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-auto inline-block text-center px-6 py-2 bg-secondary hover:bg-secondary/90 text-white font-semibold rounded-lg shadow-md transition-all"
+    >
+      {linkText}
+    </a>
+  </div>
+);
+
+
 const TaxesPage: React.FC = () => {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<Tab>('tva');
@@ -284,10 +313,14 @@ const TaxesPage: React.FC = () => {
   }, [activeTab]);
 
   return (
-    <div className="container mx-auto px-6 py-12 animate-fade-in-down">
+    <div className="container mx-auto px-6 py-12">
       <div className="max-w-4xl mx-auto text-center mb-10">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{t('taxesTitle')}</h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300">{t('taxesSubtitle')}</p>
+      </div>
+      
+      <div className="max-w-sm mx-auto mb-10">
+          <TaxesAnimation />
       </div>
 
       <div className="max-w-4xl mx-auto">
@@ -308,8 +341,32 @@ const TaxesPage: React.FC = () => {
           ))}
         </div>
         
-        {renderContent()}
+        <div>
+            {renderContent()}
+        </div>
       </div>
+
+      <div className="max-w-4xl mx-auto mt-16">
+        <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t('taxPortalsTitle')}</h2>
+            <p className="mt-2 text-gray-600 dark:text-gray-300">{t('taxPortalsSubtitle')}</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8 stagger-children">
+            <TaxLinkCard
+                title={t('simplCombinedTitle')}
+                description={t('simplCombinedDesc')}
+                href="https://www.tax.gov.ma/wps/portal/DGI/Je-declare-et-je-paie-en-ligne/!/"
+                linkText={t('portalLinkText')}
+            />
+             <TaxLinkCard
+                title={t('damancomTitle')}
+                description={t('damancomDesc')}
+                href="https://www.damancom.ma/"
+                linkText={t('portalLinkText')}
+            />
+        </div>
+      </div>
+
     </div>
   );
 };

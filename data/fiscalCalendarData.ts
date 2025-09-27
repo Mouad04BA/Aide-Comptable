@@ -1,12 +1,4 @@
-import { Language } from '../types';
-
-export interface FiscalEvent {
-  appliesToMonths: number[]; // 1 for Jan, 12 for Dec
-  dayRule: 'end' | number; // 'end' for last day of month, or a specific day number
-  title: Record<Language, string>;
-  description: Record<Language, string>;
-  category: 'TVA' | 'IS' | 'IR' | 'CNSS';
-}
+import { FiscalEvent, Language } from '../types';
 
 export const fiscalCalendarEvents: FiscalEvent[] = [
   {

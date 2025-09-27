@@ -7,9 +7,9 @@ type Translations = {
 export const translations: Translations = {
   // Header
   appName: {
-    ar: "الــمــحــاســب",
-    fr: "Le Comptable",
-    en: "The Accountant",
+    ar: "مساعد محاسب",
+    fr: "Aide Comptable",
+    en: "Accounting Assistant",
   },
   navHome: {
     ar: "الرئيسية",
@@ -41,6 +41,11 @@ export const translations: Translations = {
     fr: "Ressources",
     en: "Resources",
   },
+  changeLanguage: {
+    ar: "تغيير اللغة",
+    fr: "Changer de langue",
+    en: "Change Language",
+  },
   // Home Page
   homeTitle: {
     ar: "تعلم المحاسبة المغربية",
@@ -62,15 +67,97 @@ export const translations: Translations = {
     fr: "Commencer à apprendre",
     en: "Start Learning",
   },
-  homeTrySimulator: {
-    ar: "جرب المحاكي الذكي",
-    fr: "Essayer le simulateur IA",
-    en: "Try the AI Simulator",
+  homeFeaturesTitle: {
+    ar: "استكشف أدواتنا",
+    fr: "Explorez nos outils",
+    en: "Explore Our Tools",
   },
-  homeExploreResources: {
-    ar: "استكشف المصادر",
-    fr: "Explorer les Ressources",
-    en: "Explore Resources",
+  featureCoursesTitle: {
+    ar: "دروس تفاعلية",
+    fr: "Cours Interactifs",
+    en: "Interactive Courses",
+  },
+  featureCoursesDesc: {
+    ar: "دروس مبسطة مع تمارين واختبارات لفهم المبادئ المحاسبية الأساسية.",
+    fr: "Des leçons simplifiées avec des quiz et des exercices pour maîtriser les principes comptables clés.",
+    en: "Simplified lessons with quizzes and exercises to master key accounting principles.",
+  },
+  featureSimulatorTitle: {
+    ar: "محاكي الذكاء الاصطناعي",
+    fr: "Simulateur IA",
+    en: "AI Simulator",
+  },
+  featureSimulatorDesc: {
+    ar: "أدخل أي عملية محاسبية أو ضريبية واحصل على تحليل فوري وقيد اليومية الصحيح.",
+    fr: "Entrez n'importe quelle opération comptable ou fiscale et obtenez une analyse instantanée et l'écriture correcte.",
+    en: "Enter any accounting or tax transaction and get an instant analysis and the correct journal entry.",
+  },
+  featureResourcesTitle: {
+    ar: "مصادر ووثائق",
+    fr: "Ressources & Documents",
+    en: "Resources & Documents",
+  },
+  featureResourcesDesc: {
+    ar: "وصول سريع إلى دليل الحسابات المغربي، حاسبات الضرائب، والوثائق الرسمية.",
+    fr: "Accès rapide au plan comptable marocain, aux calculateurs d'impôts et aux documents officiels.",
+    en: "Quick access to the Moroccan chart of accounts, tax calculators, and official documents.",
+  },
+  featureButtonText: {
+      ar: "اكتشف",
+      fr: "Découvrir",
+      en: "Discover",
+  },
+  // Deadline Reminder
+  reminderTitle: {
+    ar: "تذكير: الإشعار الضريبي القادم",
+    fr: "Rappel : Prochaine échéance fiscale",
+    en: "Reminder: Next tax deadline",
+  },
+  reminderDaysRemaining_one: {
+    ar: "باقي يوم واحد",
+    fr: "{count} jour restant",
+    en: "{count} day remaining",
+  },
+  reminderDaysRemaining_other: {
+    ar: "باقي {count} أيام",
+    fr: "{count} jours restants",
+    en: "{count} days remaining",
+  },
+  reminderButton: {
+    ar: "عرض الجدول الزمني",
+    fr: "Voir le calendrier",
+    en: "View Calendar",
+  },
+  // Contact Section
+  contactTitle: {
+    ar: "تواصل معنا",
+    fr: "Contactez-Nous",
+    en: "Contact Us",
+  },
+  contactSubtitle: {
+      ar: "نحن هنا للمساعدة. تواصل معنا عبر القنوات التالية.",
+      fr: "Nous sommes là pour vous aider. Contactez-nous via les canaux suivants.",
+      en: "We're here to help. Get in touch with us through the following channels.",
+  },
+  contactDirectly: {
+    ar: "اتصل بنا مباشرة",
+    fr: "Contactez-nous directement",
+    en: "Contact Us Directly",
+  },
+  contactFollowUs: {
+    ar: "تابعنا على الشبكات الاجتماعية",
+    fr: "Suivez-nous sur les réseaux sociaux",
+    en: "Follow Us on Social Media",
+  },
+  contactEmailLabel: {
+    ar: "البريد الإلكتروني",
+    fr: "Email",
+    en: "Email",
+  },
+  contactWhatsAppLabel: {
+    ar: "واتساب",
+    fr: "WhatsApp",
+    en: "WhatsApp",
   },
   // Course Page
   courseListTitle: {
@@ -83,31 +170,137 @@ export const translations: Translations = {
     fr: "Choisissez une leçon pour commencer. Chaque leçon est conçue pour vous aider à maîtriser les concepts clés de la comptabilité marocaine.",
     en: "Choose a lesson to get started. Each lesson is designed to help you master key concepts of Moroccan accounting.",
   },
+  courseProgress: {
+    ar: "التقدم: {completed} / {total} دروس",
+    fr: "Progression : {completed} / {total} leçons",
+    en: "Progress: {completed} / {total} lessons",
+  },
   backToLessons: {
     ar: "العودة إلى الدروس",
     fr: "Retour aux leçons",
     en: "Back to Lessons",
   },
+  // Lesson View
+  previousLesson: {
+    ar: "الدرس السابق",
+    fr: "Leçon Précédente",
+    en: "Previous Lesson",
+  },
+  nextLesson: {
+    ar: "الدرس التالي",
+    fr: "Leçon Suivante",
+    en: "Next Lesson",
+  },
+  quizTitle: {
+    ar: "تمرين تطبيقي",
+    fr: "Quiz d'Application",
+    en: "Application Quiz",
+  },
+  checkAnswers: {
+    ar: "تحقق من الإجابات",
+    fr: "Vérifier les réponses",
+    en: "Check Answers",
+  },
+  quizScore: {
+    ar: "نتيجتك: {score}/{total}",
+    fr: "Votre score : {score}/{total}",
+    en: "Your Score: {score}/{total}",
+  },
+  correctAnswer: {
+    ar: "الإجابة الصحيحة",
+    fr: "Réponse correcte",
+    en: "Correct Answer",
+  },
+  yourAnswer: {
+    ar: "إجابتك",
+    fr: "Votre réponse",
+    en: "Your Answer",
+  },
+  lessonContainsQuiz: {
+    ar: "تمرين",
+    fr: "Quiz",
+    en: "Quiz",
+  },
+  lessonContainsTD: {
+    ar: "أعمال موجهة",
+    fr: "TD",
+    en: "TD",
+  },
+  tdTitle: {
+    ar: "أعمال موجهة (TD)",
+    fr: "Travaux Dirigés (TD)",
+    en: "Directed Work (TD)",
+  },
+  problemTitle: {
+    ar: "المسألة",
+    fr: "Problème",
+    en: "Problem",
+  },
+  solutionTitle: {
+    ar: "الحل",
+    fr: "Solution",
+    en: "Solution",
+  },
+  showSolution: {
+    ar: "إظهار الحل",
+    fr: "Afficher la solution",
+    en: "Show Solution",
+  },
+  hideSolution: {
+    ar: "إخفاء الحل",
+    fr: "Masquer la solution",
+    en: "Hide Solution",
+  },
   // Simulator Page
   simulatorTitle: {
-    ar: "المحاكي المحاسبي الذكي",
-    fr: "Simulateur Comptable Intelligent",
-    en: "Smart Accounting Simulator",
+    ar: "المحاكيات الذكية",
+    fr: "Simulateurs Intelligents",
+    en: "Smart Simulators",
   },
   simulatorSubtitle: {
-    ar: "أدخل وصفًا لعملية محاسبية، وسيقوم الذكاء الاصطناعي بتحليلها وتسجيلها.",
-    fr: "Entrez la description d'une opération comptable, et l'IA l'analysera et l'enregistrera.",
-    en: "Enter a description of an accounting operation, and the AI will analyze and record it.",
+    ar: "أدخل وصفًا لعملية محاسبية أو ضريبية، وسيقوم الذكاء الاصطناعي بتحليلها.",
+    fr: "Entrez la description d'une opération comptable ou fiscale, et l'IA l'analysera.",
+    en: "Enter a description of an accounting or fiscal operation, and the AI will analyze it.",
+  },
+  simulatorAccountingTab: {
+    ar: "محاكي محاسبي",
+    fr: "Simulateur Comptable",
+    en: "Accounting Simulator",
+  },
+  simulatorFiscalAnalysisTab: {
+    ar: "تحليل ضريبي",
+    fr: "Analyse Fiscale",
+    en: "Fiscal Analysis",
+  },
+  simulatorFiscalQATab: {
+    ar: "أسئلة ضريبية",
+    fr: "Questions Fiscales",
+    en: "Fiscal Q&A",
   },
   simulatorPlaceholder: {
     ar: "مثال: شراء حاسوب بمبلغ 12,000 درهم عن طريق شيك بنكي...",
     fr: "Exemple : Achat d'un ordinateur pour 12 000 DH par chèque bancaire...",
     en: "Example: Purchase of a computer for 12,000 MAD by bank check...",
   },
+  fiscalAnalysisPromptPlaceholder: {
+    ar: "مثال: غرامة تأخير في أداء الضريبة على القيمة المضافة بمبلغ 500 درهم...",
+    fr: "Exemple : Amende pour paiement tardif de la TVA d'un montant de 500 DH...",
+    en: "Example: Penalty for late VAT payment amounting to 500 MAD...",
+  },
+  fiscalQAPromptPlaceholder: {
+    ar: "مثال: ما هو المعاملة الضريبية لمصاريف الإعلان؟",
+    fr: "Exemple : Quel est le traitement fiscal des frais de publicité ?",
+    en: "Example: What is the tax treatment for advertising expenses?",
+  },
   analyzeButton: {
-    ar: "تحليل العملية",
-    fr: "Analyser l'opération",
-    en: "Analyze Operation",
+    ar: "تحليل",
+    fr: "Analyser",
+    en: "Analyze",
+  },
+  askButton: {
+    ar: "اسأل",
+    fr: "Demander",
+    en: "Ask",
   },
   analyzingButton: {
     ar: "جاري التحليل...",
@@ -115,9 +308,9 @@ export const translations: Translations = {
     en: "Analyzing...",
   },
   newOperationButton: {
-    ar: "عملية جديدة",
-    fr: "Nouvelle opération",
-    en: "New Operation",
+    ar: "جديد",
+    fr: "Nouveau",
+    en: "New",
   },
   journalEntryTitle: {
     ar: "قيد اليومية",
@@ -145,14 +338,49 @@ export const translations: Translations = {
     en: "Explanation of the Operation",
   },
   errorPrompt: {
-    ar: "الرجاء إدخال عملية محاسبية.",
-    fr: "Veuillez saisir une opération comptable.",
-    en: "Please enter an accounting operation.",
+    ar: "الرجاء إدخال نص للتحليل.",
+    fr: "Veuillez saisir un texte à analyser.",
+    en: "Please enter text to analyze.",
   },
   errorAnalysis: {
-    ar: "حدث خطأ أثناء تحليل العملية. الرجاء المحاولة مرة أخرى.",
+    ar: "حدث خطأ أثناء التحليل. الرجاء المحاولة مرة أخرى.",
     fr: "Une erreur est survenue lors de l'analyse. Veuillez réessayer.",
     en: "An error occurred during analysis. Please try again.",
+  },
+  fiscalAnalysisResult: {
+    ar: "نتيجة التحليل الضريبي",
+    fr: "Résultat de l'Analyse Fiscale",
+    en: "Fiscal Analysis Result",
+  },
+  fiscalTreatment: {
+    ar: "المعالجة الضريبية",
+    fr: "Traitement Fiscal",
+    en: "Fiscal Treatment",
+  },
+  fiscalExplanation: {
+    ar: "الشرح",
+    fr: "Explication",
+    en: "Explanation",
+  },
+  fiscalProof: {
+    ar: "الدليل (المدونة العامة للضرائب)",
+    fr: "Preuve (CGI)",
+    en: "Proof (CGI)",
+  },
+  fiscalQAResponse: {
+    ar: "إجابة الخبير الضريبي",
+    fr: "Réponse de l'Expert Fiscal",
+    en: "Tax Expert's Answer",
+  },
+  fiscalQADetailedExplanation: {
+    ar: "شرح مفصل",
+    fr: "Explication Détaillée",
+    en: "Detailed Explanation",
+  },
+  fiscalQAReferences: {
+    ar: "المراجع (المدونة العامة للضرائب)",
+    fr: "Références (CGI)",
+    en: "References (CGI)",
   },
   // Chart of Accounts Page
   chartOfAccountsTitle: {
@@ -487,5 +715,172 @@ export const translations: Translations = {
     ar: "زيارة الموقع",
     fr: "Visiter le site",
     en: "Visit the site",
+  },
+  resourceOecTitle: {
+    ar: "هيئة الخبراء المحاسبين (OEC)",
+    fr: "Ordre des Experts-Comptables (OEC)",
+    en: "Order of Chartered Accountants (OEC)",
+  },
+  resourceOecDesc: {
+    ar: "الهيئة التي تنظم مهنة المحاسبة في المغرب. ابحث عن معلومات حول المعايير والدورات التدريبية وأخبار المهنة.",
+    fr: "L'organisation qui régit la profession comptable au Maroc. Trouvez des informations sur les normes, les formations et l'actualité de la profession.",
+    en: "The organization governing the accounting profession in Morocco. Find information on standards, training, and professional news.",
+  },
+  resourceOecLink: {
+    ar: "زيارة موقع الهيئة",
+    fr: "Visiter le site de l'OEC",
+    en: "Visit the OEC Site",
+  },
+  resourceBoTitle: {
+    ar: "الجريدة الرسمية",
+    fr: "Bulletin Officiel",
+    en: "Official Gazette (Bulletin Officiel)",
+  },
+  resourceBoDesc: {
+    ar: "النشرة الرسمية التي تصدر فيها جميع القوانين، بما في ذلك قوانين المالية والتعديلات الضريبية.",
+    fr: "La publication officielle où toutes les lois, y compris les lois de finances et les modifications fiscales, sont promulguées.",
+    en: "The official publication where all laws, including finance laws and tax amendments, are enacted.",
+  },
+  resourceBoLink: {
+    ar: "تصفح الجريدة الرسمية",
+    fr: "Consulter le B.O.",
+    en: "Consult the B.O.",
+  },
+  resourceOmpicTitle: {
+    ar: "المكتب المغربي للملكية الصناعية والتجارية (OMPIC)",
+    fr: "Office Marocain de la Propriété Industrielle et Commerciale (OMPIC)",
+    en: "Moroccan Office for Industrial and Commercial Property (OMPIC)",
+  },
+  resourceOmpicDesc: {
+    ar: "المكتب المسؤول عن السجل التجاري المركزي. ضروري لإنشاء الشركات والمعلومات القانونية حولها.",
+    fr: "L'office en charge du registre central du commerce. Essentiel pour la création d'entreprise et les informations légales sur les sociétés.",
+    en: "The office in charge of the central trade register. Essential for business creation and legal information about companies.",
+  },
+  resourceOmpicLink: {
+    ar: "استكشاف OMPIC",
+    fr: "Explorer l'OMPIC",
+    en: "Explore OMPIC",
+  },
+  resourceOmpicCreationTitle: {
+    ar: "دليل إنشاء المقاولات",
+    fr: "Guide de la Création d'Entreprise",
+    en: "Business Creation Guide",
+  },
+  resourceOmpicCreationDesc: {
+    ar: "دليل رسمي من OMPIC يشرح الإجراءات خطوة بخطوة لإنشاء مقاولتك في المغرب.",
+    fr: "Le guide officiel de l'OMPIC qui détaille les procédures pas à pas pour créer votre entreprise au Maroc.",
+    en: "The official OMPIC guide detailing the step-by-step procedures for creating your business in Morocco.",
+  },
+  resourceOmpicCreationLink: {
+    ar: "تحميل الدليل",
+    fr: "Télécharger le guide",
+    en: "Download the guide",
+  },
+  resourceProcedureTitle: {
+    ar: "معالجة صعوبات المقاولة",
+    fr: "Traitement des Difficultés de l'Entreprise",
+    en: "Handling Business Difficulties",
+  },
+  resourceProcedureDesc: {
+    ar: "المرجع القانوني (الكتاب الخامس من مدونة التجارة) المتعلق بإجراءات الوقاية، التسوية، والتصفية القضائية.",
+    fr: "La référence légale (Livre V du Code de Commerce) sur les procédures de prévention, de redressement et de liquidation judiciaire.",
+    en: "The legal reference (Book V of the Commercial Code) on prevention, recovery, and judicial liquidation procedures.",
+  },
+  resourceProcedureLink: {
+    ar: "الاطلاع على الكتاب الخامس",
+    fr: "Consulter le Livre V",
+    en: "Consult Book V",
+  },
+  resourceTeledeclarationTitle: {
+    ar: "دليل الإقرارات الضريبية عن بعد",
+    fr: "Guide des Télédéclarations Fiscales",
+    en: "Online Tax Filing Guide",
+  },
+  resourceTeledeclarationDesc: {
+    ar: "دليل عملي من المديرية العامة للضرائب لمساعدتك في الإقرارات الضريبية عبر الإنترنت (IS, TVA, IR).",
+    fr: "Un guide pratique de la DGI pour vous aider avec vos déclarations fiscales en ligne (IS, TVA, IR).",
+    en: "A practical guide from the DGI to help you with your online tax declarations (IS, VAT, IR).",
+  },
+  resourceTeledeclarationLink: {
+    ar: "عرض الدليل الضريبي",
+    fr: "Voir le guide fiscal",
+    en: "View the tax guide",
+  },
+  // Tax Page Portals
+  taxPortalsTitle: {
+    ar: "بوابات التصريح والأداء عن بعد",
+    fr: "Portails de Télédéclaration & Paiement",
+    en: "Online Declaration & Payment Portals",
+  },
+  taxPortalsSubtitle: {
+    ar: "ولوج مباشر للمنصات الرسمية لتصريحاتكم وأداءاتكم.",
+    fr: "Accédez directement aux plateformes officielles pour vos déclarations et paiements.",
+    en: "Directly access the official platforms for your declarations and payments.",
+  },
+  simplCombinedTitle: {
+    ar: "منصة SIMPL (ق.م.ض، ض.ش، ض.د)",
+    fr: "SIMPL (TVA, IS, IR)",
+    en: "SIMPL (VAT, Corp. Tax, Income Tax)",
+  },
+  simplCombinedDesc: {
+    ar: "البوابة الموحدة للمديرية العامة للضرائب لجميع تصريحاتكم وأداءاتكم عن بعد (ق.م.ض، ض.ش، ض.د).",
+    fr: "Portail unifié de la DGI pour toutes vos télédéclarations et télépaiements (TVA, IS, IR).",
+    en: "Unified DGI portal for all your online declarations and payments (VAT, Corp. Tax, Income Tax).",
+  },
+  damancomTitle: {
+    ar: "DAMANCOM",
+    fr: "DAMANCOM",
+    en: "DAMANCOM",
+  },
+  damancomDesc: {
+    ar: "بوابة التصريح بالأجور والأداء عن بعد لاشتراكات الصندوق الوطني للضمان الاجتماعي.",
+    fr: "Portail pour la télédéclaration des salaires et le télépaiement des cotisations CNSS.",
+    en: "Portal for online salary declaration and payment of CNSS contributions.",
+  },
+  portalLinkText: {
+    ar: "ولوج البوابة",
+    fr: "Accéder au portail",
+    en: "Access portal",
+  },
+  // Interactive Quiz
+  startQuiz: {
+    ar: "ابدأ الاختبار",
+    fr: "Commencer le Quiz",
+    en: "Start Quiz",
+  },
+  questionProgress: {
+    ar: "سؤال {current}/{total}",
+    fr: "Question {current}/{total}",
+    en: "Question {current}/{total}",
+  },
+  nextQuestion: {
+    ar: "السؤال التالي",
+    fr: "Question Suivante",
+    en: "Next Question",
+  },
+  finishQuiz: {
+    ar: "إنهاء الاختبار",
+    fr: "Terminer le Quiz",
+    en: "Finish Quiz",
+  },
+  quizResultsTitle: {
+    ar: "نتائج الاختبار",
+    fr: "Résultats du Quiz",
+    en: "Quiz Results",
+  },
+  retakeQuiz: {
+    ar: "إعادة الاختبار",
+    fr: "Recommencer le Quiz",
+    en: "Retake Quiz",
+  },
+  correctFeedback: {
+    ar: "صحيح!",
+    fr: "Correct !",
+    en: "Correct!",
+  },
+  incorrectFeedback: {
+    ar: "غير صحيح.",
+    fr: "Incorrect.",
+    en: "Incorrect.",
   },
 };

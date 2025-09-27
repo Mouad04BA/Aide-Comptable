@@ -3,7 +3,7 @@ import { Page, Language } from '../types';
 import LogoIcon from './icons/LogoIcon';
 import MoonIcon from './icons/MoonIcon';
 import SunIcon from './icons/SunIcon';
-import GlobeIcon from './icons/GlobeIcon';
+import PlanetIcon from './icons/PlanetIcon';
 import MenuIcon from './icons/MenuIcon';
 import CloseIcon from './icons/CloseIcon';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -40,6 +40,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
   const { language, setLanguage, t } = useLanguage();
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileLangMenuOpen, setIsMobileLangMenuOpen] = useState(false);
 
   const languages: { code: Language; name: string }[] = [
     { code: 'ar', name: 'العربية' },
@@ -50,6 +51,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
   const handleLanguageChange = (langCode: Language) => {
     setLanguage(langCode);
     setIsLangMenuOpen(false);
+    setIsMobileLangMenuOpen(false);
     setIsMobileMenuOpen(false); // Close mobile menu on language change
   };
 
@@ -68,10 +70,10 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
   ];
 
   return (
-    <header className="bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm shadow-sm sticky top-0 z-50 animate-fade-in-down">
+    <header className="bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
       <nav className="container mx-auto px-6 py-3">
         <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 cursor-pointer" onClick={() => onPageChange(Page.Home)}>
               <LogoIcon className="h-8 w-8 text-primary" />
               <span className="text-xl font-bold text-gray-800 dark:text-white">{t('appName')}</span>
             </div>
@@ -87,7 +89,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
                   className="hidden md:flex items-center p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
                   aria-label="Change language"
                 >
-                  <GlobeIcon className="h-5 w-5" />
+                  <PlanetIcon className="h-5 w-5" />
                   <span className="mx-1 font-medium text-sm">{language.toUpperCase()}</span>
                 </button>
                 {isLangMenuOpen && (
@@ -104,13 +106,38 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
                   </div>
                 )}
               </div>
+              
               <button
                 onClick={onThemeToggle}
-                className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                aria-pressed={isDarkMode}
                 aria-label="Toggle dark mode"
+                className={`relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-dark-card ${
+                  isDarkMode ? 'bg-primary' : 'bg-gray-300'
+                }`}
               >
-                {isDarkMode ? <SunIcon className="h-6 w-6" /> : <MoonIcon className="h-6 w-6" />}
+                <span
+                  aria-hidden="true"
+                  className={`pointer-events-none relative inline-block h-6 w-6 transform rounded-full bg-white shadow ring-0 transition duration-300 ease-in-out ${
+                    isDarkMode ? 'translate-x-5 rtl:-translate-x-5' : 'translate-x-0'
+                  }`}
+                >
+                  <span
+                    className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-300 ease-in-out ${
+                      isDarkMode ? 'opacity-0 ease-out duration-100' : 'opacity-100 ease-in duration-200'
+                    }`}
+                  >
+                    <SunIcon className="h-4 w-4 text-yellow-500" />
+                  </span>
+                  <span
+                    className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-300 ease-in-out ${
+                      isDarkMode ? 'opacity-100 ease-in duration-200' : 'opacity-0 ease-out duration-100'
+                    }`}
+                  >
+                    <MoonIcon className="h-4 w-4 text-primary" />
+                  </span>
+                </span>
               </button>
+
               {/* Mobile Menu Button */}
               <div className="md:hidden">
                 <button
@@ -144,20 +171,32 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
                         </button>
                     ))}
                     <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
-                     {languages.map(lang => (
-                        <button
-                            key={lang.code}
-                            onClick={() => handleLanguageChange(lang.code)}
-                            className={`flex items-center w-full text-left ltr:text-left rtl:text-right px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
-                                language === lang.code
-                                ? 'bg-primary-dark/10 text-primary-dark dark:bg-primary-dark/20 dark:text-white'
-                                : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card'
-                            }`}
-                        >
-                            <GlobeIcon className="h-5 w-5 mr-3 rtl:ml-3" />
-                            {lang.name}
+                    <div>
+                        <button onClick={() => setIsMobileLangMenuOpen(prev => !prev)} className="flex justify-between items-center w-full px-4 py-3 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card">
+                            <span className="flex items-center">
+                                <PlanetIcon className="h-5 w-5 mr-3 rtl:ml-3" />
+                                {t('changeLanguage')}
+                            </span>
+                             <svg className={`w-5 h-5 transform transition-transform ${isMobileLangMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                    ))}
+                        {isMobileLangMenuOpen && (
+                            <div className="pt-2 pl-8 rtl:pr-8 flex flex-col items-start gap-1">
+                                {languages.map(lang => (
+                                    <button
+                                        key={lang.code}
+                                        onClick={() => handleLanguageChange(lang.code)}
+                                        className={`w-full text-left ltr:text-left rtl:text-right px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+                                            language === lang.code
+                                            ? 'bg-primary-dark/10 text-primary-dark dark:bg-primary-dark/20 dark:text-white'
+                                            : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card'
+                                        }`}
+                                    >
+                                        {lang.name}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         )}
