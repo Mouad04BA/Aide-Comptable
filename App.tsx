@@ -8,7 +8,6 @@ import ChartOfAccountsPage from './components/ChartOfAccountsPage';
 import TaxesPage from './components/TaxesPage';
 import ResourcesPage from './components/ResourcesPage';
 import { LanguageProvider } from './contexts/LanguageContext';
-import BackgroundAnimation from './components/BackgroundAnimation';
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -31,39 +30,26 @@ const App: React.FC = () => {
   }, []);
 
   const renderPage = () => {
-    let pageComponent;
     switch (currentPage) {
       case Page.Course:
-        pageComponent = <CoursePage />;
-        break;
+        return <CoursePage />;
       case Page.Simulator:
-        pageComponent = <SimulatorPage />;
-        break;
+        return <SimulatorPage />;
       case Page.ChartOfAccounts:
-        pageComponent = <ChartOfAccountsPage />;
-        break;
+        return <ChartOfAccountsPage />;
       case Page.Taxes:
-        pageComponent = <TaxesPage />;
-        break;
+        return <TaxesPage />;
       case Page.Resources:
-        pageComponent = <ResourcesPage />;
-        break;
+        return <ResourcesPage />;
       case Page.Home:
       default:
-        pageComponent = <HomePage onPageChange={handlePageChange} />;
-        break;
+        return <HomePage onPageChange={handlePageChange} />;
     }
-     return (
-        <div className="animate-fade-in-up" key={currentPage}>
-            {pageComponent}
-        </div>
-    );
   };
 
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-white dark:bg-dark-bg text-gray-800 dark:text-dark-text font-sans">
-        <BackgroundAnimation />
         <div className="relative z-10 min-h-screen transition-colors duration-300">
             <Header 
               currentPage={currentPage} 

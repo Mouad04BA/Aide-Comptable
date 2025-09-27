@@ -76,7 +76,7 @@ const UpcomingDeadlineReminder: React.FC<UpcomingDeadlineReminderProps> = ({ onN
     : t('reminderDaysRemaining_other').replace('{count}', daysRemaining.toString());
 
   return (
-    <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded-r-lg shadow-md animate-fade-in">
+    <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded-r-lg shadow-md">
       <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-4">
         <div className="flex items-center gap-4">
             <BellAlertIcon className="w-8 h-8 text-blue-500 flex-shrink-0" />

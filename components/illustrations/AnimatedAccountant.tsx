@@ -3,94 +3,136 @@ import React from 'react';
 const AnimatedAccountant: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <div className={className}>
-      <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An animated illustration of a friendly accountant working at their desk.">
+      <svg viewBox="0 0 500 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An illustration of a friendly accountant working at their desk.">
         <style>{`
-            .shadow { filter: drop-shadow(0px 8px 6px rgba(0,0,0,0.1)); }
-            html.dark .shadow { filter: drop-shadow(0px 8px 6px rgba(0,0,0,0.25)); }
-            
-            @keyframes subtle-sway {
-                0%, 100% { transform: translateY(0) rotate(-0.5deg); }
-                50% { transform: translateY(-3px) rotate(0.5deg); }
+            @keyframes float-rotate {
+                0% { transform: translateY(0px) rotate(-2deg); }
+                50% { transform: translateY(-12px) rotate(2deg); }
+                100% { transform: translateY(0px) rotate(-2deg); }
             }
-            .animate-sway { animation: subtle-sway 8s ease-in-out infinite; }
-
-            @keyframes head-bob {
-                0%, 100% { transform: translateY(0) rotate(1deg); }
-                50% { transform: translateY(2px) rotate(-1deg); }
+            @keyframes breathe {
+                0% { transform: translateY(0) scale(1); }
+                50% { transform: translateY(-2px) scale(1.01); }
+                100% { transform: translateY(0) scale(1); }
             }
-            .head { animation: head-bob 6s ease-in-out infinite alternate; }
-
-            @keyframes draw-line {
-                to { stroke-dashoffset: 0; }
-            }
-            .graph-line {
-                stroke-dasharray: 150;
-                stroke-dashoffset: 150;
-                animation: draw-line 3s ease-in-out infinite;
-                animation-delay: 0.5s;
-            }
-            
-            @keyframes blink-cursor {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0; }
-            }
-            .cursor {
-                animation: blink-cursor 1s step-end infinite;
+            .float-1 { animation: float-rotate 6s ease-in-out infinite; animation-delay: 0s; }
+            .float-2 { animation: float-rotate 7s ease-in-out infinite; animation-delay: -1.5s; }
+            .float-3 { animation: float-rotate 5s ease-in-out infinite; animation-delay: -3s; }
+            .breathe {
+                animation: breathe 8s ease-in-out infinite;
+                transform-origin: center bottom;
             }
         `}</style>
         
-        <path d="M0 320 H 600 V 400 H 0 Z" className="fill-gray-100 dark:fill-gray-800" />
-        
-        <g className="shadow">
-            <g>
-                <path d="M50 340 L 550 340 L 580 200 L 20 200 Z" className="fill-gray-200 dark:fill-gray-700" />
-                <rect x="20" y="200" width="560" height="20" rx="5" className="fill-white dark:fill-gray-600" />
-                <rect x="80" y="340" width="20" height="50" className="fill-gray-300 dark:fill-gray-500" />
-                <rect x="500" y="340" width="20" height="50" className="fill-gray-300 dark:fill-gray-500" />
-            </g>
-            
-            <g className="animate-sway">
-                <rect x="260" y="220" width="80" height="130" rx="10" className="fill-primary/80 dark:fill-primary-dark/80" />
-                <rect x="290" y="350" width="20" height="40" className="fill-gray-400 dark:fill-gray-500" />
-                <path d="M250 390 H 350 L 340 400 H 260 Z" className="fill-gray-400 dark:fill-gray-500" />
-            </g>
-
-            <g transform="translate(245, 100)" className="animate-sway" style={{animationDelay: '-2s'}}>
-                <path d="M35 50 C 35 30, 115 30, 115 50 V 130 H 35 Z" className="fill-teal-600 dark:fill-teal-500" />
-                <g className="head">
-                    <circle cx="75" cy="30" r="25" className="fill-orange-200 dark:fill-orange-300" />
-                    <path d="M50 20 Q 75 0, 100 20 V 30 H 50 Z" className="fill-gray-800 dark:fill-gray-700" />
-                </g>
-                <rect x="65" y="50" width="20" height="10" className="fill-orange-200 dark:fill-orange-300" />
-                <path d="M60 60 L 75 75 L 90 60 Z" fill="white" />
-            </g>
-            
-            <g transform="translate(350, 130)">
-                <path d="M0 70 L 150 70 L 145 75 H 5 Z" className="fill-gray-400 dark:fill-gray-500" />
-                <rect x="10" y="0" width="130" height="70" rx="5" className="fill-gray-300 dark:fill-gray-600" />
-                <rect x="15" y="5" width="120" height="60" rx="2" className="fill-primary/80 dark:fill-primary-dark/80" />
-                <path d="M25 50 C 45 15, 65 55, 125 30" className="graph-line stroke-white/80" fill="none" strokeWidth="3" strokeLinecap="round"/>
-                <rect x="126" y="28" width="2" height="10" className="cursor fill-white/80" />
-            </g>
-
-            <g transform="translate(100, 155)">
-                <rect x="0" y="0" width="100" height="60" rx="3" transform="rotate(-5)" className="fill-white dark:fill-gray-400" />
-                <rect x="5" y="5" width="90" height="50" rx="3" transform="rotate(5)" className="fill-white dark:fill-gray-400" />
-                 <line x1="15" y1="15" x2="85" y2="15" className="stroke-gray-300 dark:stroke-gray-500" strokeWidth="2" transform="rotate(5)"/>
-                 <line x1="15" y1="25" x2="75" y2="25" className="stroke-gray-300 dark:stroke-gray-500" strokeWidth="2" transform="rotate(5)"/>
-                 <line x1="15" y1="35" x2="85" y2="35" className="stroke-gray-300 dark:stroke-gray-500" strokeWidth="2" transform="rotate(5)"/>
-            </g>
-            
-             <g transform="translate(220, 150)">
-                <rect x="0" y="0" width="50" height="65" rx="5" className="fill-gray-700 dark:fill-gray-800"/>
-                <rect x="5" y="5" width="40" height="15" rx="2" className="fill-green-300 dark:fill-green-400 opacity-80" />
-                <text x="40" y="15" textAnchor="end" alignmentBaseline="middle" className="fill-gray-800/70 font-mono font-bold text-xs cursor">|</text>
-                <g className="fill-gray-500 dark:fill-gray-600">
-                    <rect x="7" y="25" width="8" height="8" rx="2"/><rect x="21" y="25" width="8" height="8" rx="2"/><rect x="35" y="25" width="8" height="8" rx="2"/>
-                    <rect x="7" y="38" width="8" height="8" rx="2"/><rect x="21" y="38" width="8" height="8" rx="2"/><rect x="35" y="38" width="8" height="8" rx="2"/>
-                </g>
+        {/* Floating elements - background */}
+        <g className="float-1" style={{ transformOrigin: 'center' }}>
+            {/* Blue Calculator */}
+            <rect x="60" y="80" width="80" height="100" rx="10" fill="#87CEEB" />
+            <rect x="70" y="90" width="60" height="25" rx="5" fill="#FFA500" />
+            <circle cx="80" cy="125" r="5" fill="#FFFFFF" />
+            <circle cx="100" cy="125" r="5" fill="#FFFFFF" />
+            <circle cx="120" cy="125" r="5" fill="#FFFFFF" />
+            <circle cx="80" cy="145" r="5" fill="#FFFFFF" />
+            <circle cx="100" cy="145" r="5" fill="#FFFFFF" />
+            <circle cx="120" cy="145" r="5" fill="#FFFFFF" />
+            <circle cx="80" cy="165" r="5" fill="#FFFFFF" />
+            <circle cx="100" cy="165" r="5" fill="#FFFFFF" />
+            <circle cx="120" cy="165" r="5" fill="#FFFFFF" />
+        </g>
+        <g className="float-2" style={{ transformOrigin: 'center' }}>
+            {/* Green Calendar */}
+            <rect x="350" y="90" width="90" height="70" rx="10" fill="#3CB371" />
+            <g stroke="#FFFFFF" strokeWidth="2">
+                <line x1="350" y1="110" x2="440" y2="110" />
+                <line x1="350" y1="130" x2="440" y2="130" />
+                <line x1="380" y1="90" x2="380" y2="160" />
+                <line x1="410" y1="90" x2="410" y2="160" />
             </g>
         </g>
+        
+        {/* Desk */}
+        <path d="M20 350 H480 V420 H20 Z" fill="#D2B48C" />
+        <path d="M10 330 H490 L480 350 H20 Z" fill="#8B4513" />
+
+        {/* Person */}
+        <g className="breathe">
+            {/* Body */}
+            <path d="M180 340 C 180 250, 320 250, 320 340 Z" fill="#4682B4" />
+            {/* Shirt */}
+            <path d="M220 280 L250 310 L280 280 Z" fill="white" />
+            {/* Tie */}
+            <path d="M250 280 L240 330 L260 330 Z" fill="#DC143C" />
+            {/* Head */}
+            <circle cx="250" cy="210" r="70" fill="#FFE4C4" />
+            {/* Hair */}
+            <path d="M190 210 Q 250 140, 310 210 A 70 70 0 0 1 190 210 Z" fill="#A0522D" />
+            {/* Glasses */}
+            <g stroke="black" strokeWidth="5" fill="none">
+                <circle cx="220" cy="215" r="20" />
+                <circle cx="280" cy="215" r="20" />
+                <line x1="240" y1="215" x2="260" y2="215" />
+            </g>
+            {/* Eyes */}
+            <circle cx="220" cy="215" r="5" fill="black" />
+            <circle cx="280" cy="215" r="5" fill="black" />
+            {/* Smile */}
+            <path d="M230 250 Q250 265, 270 250" stroke="black" strokeWidth="3" fill="none" />
+            {/* Hands */}
+            <circle cx="180" cy="340" r="20" fill="#FFE4C4" />
+            <circle cx="320" cy="340" r="20" fill="#FFE4C4" />
+        </g>
+        
+        {/* Items on desk */}
+        <g transform="translate(0 10)">
+            <rect x="150" y="330" width="80" height="100" rx="10" fill="#36454F" />
+            <rect x="160" y="340" width="60" height="20" rx="5" fill="#90EE90" />
+            <g fill="#778899">
+                <rect x="160" y="365" width="15" height="10" rx="3" />
+                <rect x="182.5" y="365" width="15" height="10" rx="3" />
+                <rect x="205" y="365" width="15" height="10" rx="3" />
+                <rect x="160" y="380" width="15" height="10" rx="3" />
+                <rect x="182.5" y="380" width="15" height="10" rx="3" />
+                <rect x="205" y="380" width="15" height="10" rx="3" />
+            </g>
+            <rect x="260" y="335" width="100" height="80" rx="5" fill="#ADD8E6" />
+            <g stroke="#87CEEB" strokeWidth="2">
+                <line x1="270" y1="350" x2="350" y2="350" />
+                <line x1="270" y1="365" x2="350" y2="365" />
+                <line x1="270" y1="380" x2="330" y2="380" />
+            </g>
+        </g>
+        
+        {/* Floating coins */}
+        <g className="float-3" style={{ transformOrigin: 'center' }}>
+            {/* Coin stack */}
+            <ellipse cx="400" cy="330" rx="30" ry="10" fill="#FBBF24" />
+            <path d="M370 330 V310 A30 10 0 0 1 430 310 V330 A30 10 0 0 1 370 330" fill="#FDE68A" />
+            <ellipse cx="400" cy="310" rx="30" ry="10" fill="#FBBF24" />
+            <ellipse cx="400" cy="320" rx="30" ry="10" fill="#FBBF24" stroke="#ca8a04" strokeWidth="1" />
+            <text x="400" y="314" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#854d0e">MAD</text>
+        </g>
+        <g className="float-1" style={{ transformOrigin: 'center', animationDelay: '-1s' }}>
+             {/* Single Coin */}
+            <circle cx="100" cy="280" r="30" fill="#FBBF24" />
+            <circle cx="100" cy="280" r="25" fill="#FDE68A" />
+            <text x="100" y="285" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#854d0e">MAD</text>
+        </g>
+         <g className="float-2" style={{ transformOrigin: 'center', animationDelay: '-2s' }}>
+             {/* Another Coin */}
+            <circle cx="430" cy="240" r="25" fill="#FBBF24" />
+            <circle cx="430" cy="240" r="20" fill="#FDE68A" />
+            <text x="430" y="244" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#854d0e">MAD</text>
+        </g>
+
+        {/* Stars and dots */}
+        <g fill="#F59E0B">
+            <path d="M340 250 l5 15 l15-5 l-10 10 l10 10 l-15-5 l-5 15 l-5-15 l-15 5 l10-10 l-10-10 l15 5 z" />
+        </g>
+         <g fill="#3B82F6">
+             <circle cx="50" cy="300" r="5" />
+             <circle cx="150" cy="60" r="4" />
+             <circle cx="460" cy="380" r="6" />
+         </g>
       </svg>
     </div>
   );

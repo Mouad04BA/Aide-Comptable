@@ -6,7 +6,6 @@ import SearchIcon from './icons/SearchIcon';
 import AccountDetailModal from './AccountDetailModal';
 import { getAccountExplanation } from '../services/geminiService';
 import AccordionItem from './AccordionItem';
-import ChartOfAccountsAnimation from './illustrations/ChartOfAccountsAnimation';
 
 const ChartOfAccountsPage: React.FC = () => {
   const { language, t } = useLanguage();
@@ -73,7 +72,7 @@ const ChartOfAccountsPage: React.FC = () => {
 
         <div className="max-w-4xl mx-auto mt-8">
             <div className="max-w-md mx-auto mb-8">
-                <ChartOfAccountsAnimation />
+                
             </div>
 
           <div className="bg-white dark:bg-dark-card p-6 rounded-xl shadow-md mb-8">
@@ -96,7 +95,7 @@ const ChartOfAccountsPage: React.FC = () => {
             />
           </div>
 
-          <div className="space-y-4 stagger-children">
+          <div className="space-y-4">
             {hasResults ? (
               filteredData.map(classInfo => (
                 <AccordionItem

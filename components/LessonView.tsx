@@ -225,7 +225,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
             <button
                 onClick={() => previousLesson && onNavigate(previousLesson.id)}
                 disabled={!previousLesson}
-                className="px-6 py-3 text-sm font-medium rounded-lg transition-all transform hover:scale-105 flex items-center gap-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
+                className="px-6 py-3 text-sm font-medium rounded-lg transition-all transform flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 enabled:hover:bg-gray-300 enabled:dark:hover:bg-gray-600 enabled:hover:scale-105 disabled:bg-gray-100 disabled:dark:bg-gray-800 disabled:text-gray-500 disabled:dark:text-gray-500 disabled:cursor-not-allowed"
             >
                 &larr; {t('previousLesson')}
             </button>
@@ -240,7 +240,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
             <button
                 onClick={() => nextLesson && onNavigate(nextLesson.id)}
                 disabled={!nextLesson}
-                className="px-6 py-3 text-sm font-medium rounded-lg transition-all transform hover:scale-105 flex items-center gap-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
+                className="px-6 py-3 text-sm font-medium rounded-lg transition-all transform flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 enabled:hover:bg-gray-300 enabled:dark:hover:bg-gray-600 enabled:hover:scale-105 disabled:bg-gray-100 disabled:dark:bg-gray-800 disabled:text-gray-500 disabled:dark:text-gray-500 disabled:cursor-not-allowed"
             >
                 {t('nextLesson')} &rarr;
             </button>

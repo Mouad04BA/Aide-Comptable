@@ -883,4 +883,9 @@ export const translations: Translations = {
     fr: "Incorrect.",
     en: "Incorrect.",
   },
+  themeToggleLabel: {
+    ar: "المظهر",
+    fr: "Thème",
+    en: "Theme",
+  },
 };

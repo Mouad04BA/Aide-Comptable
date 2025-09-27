@@ -6,7 +6,6 @@ import BookOpenIcon from './icons/BookOpenIcon';
 import SparklesIcon from './icons/SparklesIcon';
 import DocumentTextIcon from './icons/DocumentTextIcon';
 import UpcomingDeadlineReminder from './UpcomingDeadlineReminder';
-import AnimatedAccountant from './illustrations/AnimatedAccountant';
 
 interface HomePageProps {
   onPageChange: (page: Page) => void;
@@ -47,13 +46,13 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
         {/* Hero Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center md:text-left rtl:md:text-right">
-                <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight">
                 {t('homeTitle')} <span className="text-primary-dark">{t('homeTitleHighlight')}</span>
                 </h1>
-                <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto md:mx-0 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto md:mx-0">
                 {t('homeSubtitle')}
                 </p>
-                <div className="mt-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+                <div className="mt-8">
                 <button
                     onClick={() => onPageChange(Page.Course)}
                     className="px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold text-lg rounded-lg shadow-xl transition-transform transform hover:scale-105"
@@ -62,13 +61,13 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                 </button>
                 </div>
             </div>
-             <div className="hidden md:flex justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                <AnimatedAccountant className="w-full max-w-lg h-auto" />
+             <div className="hidden md:flex justify-center items-center">
+                
             </div>
         </div>
         
         {/* Upcoming Deadline Reminder */}
-        <div className="mt-16 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+        <div className="mt-16 max-w-3xl mx-auto">
             <UpcomingDeadlineReminder onNavigate={() => onPageChange(Page.Taxes)} />
         </div>
         
@@ -77,7 +76,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
             <div className="text-center">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{t('homeFeaturesTitle')}</h2>
             </div>
-            <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto stagger-children">
+            <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <FeatureCard 
                     icon={<BookOpenIcon />}
                     title={t('featureCoursesTitle')}

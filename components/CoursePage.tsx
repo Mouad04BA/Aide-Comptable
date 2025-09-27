@@ -118,7 +118,7 @@ const CoursePage: React.FC = () => {
           </div>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 stagger-children">
+        <div className="grid md:grid-cols-2 gap-8">
           {courseData.map(lesson => (
             <LessonCard 
                 key={lesson.id} 

@@ -35,7 +35,7 @@ const ResourcesPage: React.FC = () => {
             <p className="mt-2 text-gray-600 dark:text-gray-300">{t('resourcesSubtitle')}</p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ResourceCard 
                 title={t('resourceCgiTitle')}
                 description={t('resourceCgiDesc')}

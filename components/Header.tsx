@@ -68,6 +68,39 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
     { page: Page.Taxes, label: t('navTaxes') },
     { page: Page.Resources, label: t('navResources') },
   ];
+  
+  const themeToggleButton = (
+    <button
+      onClick={onThemeToggle}
+      aria-pressed={isDarkMode}
+      aria-label="Toggle dark mode"
+      className={`relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-dark-card ${
+        isDarkMode ? 'bg-primary' : 'bg-gray-300'
+      }`}
+    >
+      <span
+        aria-hidden="true"
+        className={`pointer-events-none relative inline-block h-6 w-6 transform rounded-full bg-white shadow ring-0 transition duration-300 ease-in-out ${
+          isDarkMode ? 'translate-x-5 rtl:-translate-x-5' : 'translate-x-0'
+        }`}
+      >
+        <span
+          className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-300 ease-in-out ${
+            isDarkMode ? 'opacity-0 ease-out duration-100' : 'opacity-100 ease-in duration-200'
+          }`}
+        >
+          <SunIcon className="h-4 w-4 text-yellow-500" />
+        </span>
+        <span
+          className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-300 ease-in-out ${
+            isDarkMode ? 'opacity-100 ease-in duration-200' : 'opacity-0 ease-out duration-100'
+          }`}
+        >
+          <MoonIcon className="h-4 w-4 text-primary" />
+        </span>
+      </span>
+    </button>
+  );
 
   return (
     <header className="bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
@@ -83,10 +116,10 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
                 ))}
             </div>
             <div className="flex items-center gap-4">
-              <div className="relative">
+              <div className="relative hidden md:block">
                 <button
                   onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                  className="hidden md:flex items-center p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                  className="flex items-center p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
                   aria-label="Change language"
                 >
                   <PlanetIcon className="h-5 w-5" />
@@ -107,36 +140,9 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
                 )}
               </div>
               
-              <button
-                onClick={onThemeToggle}
-                aria-pressed={isDarkMode}
-                aria-label="Toggle dark mode"
-                className={`relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-dark-card ${
-                  isDarkMode ? 'bg-primary' : 'bg-gray-300'
-                }`}
-              >
-                <span
-                  aria-hidden="true"
-                  className={`pointer-events-none relative inline-block h-6 w-6 transform rounded-full bg-white shadow ring-0 transition duration-300 ease-in-out ${
-                    isDarkMode ? 'translate-x-5 rtl:-translate-x-5' : 'translate-x-0'
-                  }`}
-                >
-                  <span
-                    className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-300 ease-in-out ${
-                      isDarkMode ? 'opacity-0 ease-out duration-100' : 'opacity-100 ease-in duration-200'
-                    }`}
-                  >
-                    <SunIcon className="h-4 w-4 text-yellow-500" />
-                  </span>
-                  <span
-                    className={`absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-300 ease-in-out ${
-                      isDarkMode ? 'opacity-100 ease-in duration-200' : 'opacity-0 ease-out duration-100'
-                    }`}
-                  >
-                    <MoonIcon className="h-4 w-4 text-primary" />
-                  </span>
-                </span>
-              </button>
+              <div className="hidden md:block">
+                {themeToggleButton}
+              </div>
 
               {/* Mobile Menu Button */}
               <div className="md:hidden">
@@ -154,52 +160,63 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
         </div>
         
         {/* Mobile Menu Dropdown */}
-        {isMobileMenuOpen && (
-            <div className="md:hidden mt-4" id="mobile-menu">
-                <div className="flex flex-col gap-1">
-                    {navItems.map(item => (
-                        <button
-                          key={item.page}
-                          onClick={() => handleMobileLinkClick(item.page)}
-                          className={`block w-full text-left ltr:text-left rtl:text-right px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
-                            currentPage === item.page
-                              ? 'bg-primary-dark/10 text-primary-dark dark:bg-primary-dark/20 dark:text-white'
-                              : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card'
-                          }`}
-                        >
-                          {item.label}
-                        </button>
-                    ))}
-                    <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
-                    <div>
-                        <button onClick={() => setIsMobileLangMenuOpen(prev => !prev)} className="flex justify-between items-center w-full px-4 py-3 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card">
-                            <span className="flex items-center">
-                                <PlanetIcon className="h-5 w-5 mr-3 rtl:ml-3" />
-                                {t('changeLanguage')}
-                            </span>
-                             <svg className={`w-5 h-5 transform transition-transform ${isMobileLangMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        {isMobileLangMenuOpen && (
-                            <div className="pt-2 pl-8 rtl:pr-8 flex flex-col items-start gap-1">
-                                {languages.map(lang => (
-                                    <button
-                                        key={lang.code}
-                                        onClick={() => handleLanguageChange(lang.code)}
-                                        className={`w-full text-left ltr:text-left rtl:text-right px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
-                                            language === lang.code
-                                            ? 'bg-primary-dark/10 text-primary-dark dark:bg-primary-dark/20 dark:text-white'
-                                            : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card'
-                                        }`}
-                                    >
-                                        {lang.name}
-                                    </button>
-                                ))}
-                            </div>
-                        )}
+        <div 
+            className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${isMobileMenuOpen ? 'max-h-[600px] mt-4' : 'max-h-0 mt-0'}`}
+            id="mobile-menu"
+        >
+            <div className={`flex flex-col gap-1 transition-opacity duration-200 ease-in-out ${isMobileMenuOpen ? 'opacity-100 delay-150' : 'opacity-0'}`}>
+                {navItems.map(item => (
+                    <button
+                      key={item.page}
+                      onClick={() => handleMobileLinkClick(item.page)}
+                      className={`block w-full text-left ltr:text-left rtl:text-right px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+                        currentPage === item.page
+                          ? 'bg-primary-dark/10 text-primary-dark dark:bg-primary-dark/20 dark:text-white'
+                          : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                ))}
+                <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+                
+                {/* Language Selector */}
+                <div>
+                    <button onClick={() => setIsMobileLangMenuOpen(prev => !prev)} className="flex justify-between items-center w-full px-4 py-3 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card">
+                        <span className="flex items-center">
+                            <PlanetIcon className="h-5 w-5 mr-3 rtl:ml-3" />
+                            {t('changeLanguage')}
+                        </span>
+                         <svg className={`w-5 h-5 transform transition-transform duration-200 ${isMobileLangMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isMobileLangMenuOpen ? 'max-h-48' : 'max-h-0'}`}>
+                      <div className="pt-2 pl-8 rtl:pr-8 flex flex-col items-start gap-1">
+                          {languages.map(lang => (
+                              <button
+                                  key={lang.code}
+                                  onClick={() => handleLanguageChange(lang.code)}
+                                  className={`w-full text-left ltr:text-left rtl:text-right px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+                                      language === lang.code
+                                      ? 'bg-primary-dark/10 text-primary-dark dark:bg-primary-dark/20 dark:text-white'
+                                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card'
+                                  }`}
+                              >
+                                  {lang.name}
+                              </button>
+                          ))}
+                      </div>
                     </div>
                 </div>
+
+                {/* Theme Toggle in Mobile Menu */}
+                <div className="flex justify-between items-center w-full px-4 py-3 rounded-md">
+                    <span className="flex items-center text-base font-medium text-gray-600 dark:text-gray-300">
+                        {t('themeToggleLabel')}
+                    </span>
+                    {themeToggleButton}
+                </div>
             </div>
-        )}
+        </div>
       </nav>
     </header>
   );

@@ -6,7 +6,6 @@ import UserIcon from './icons/UserIcon';
 import UsersIcon from './icons/UsersIcon';
 import CalendarIcon from './icons/CalendarIcon';
 import FiscalCalendar from './FiscalCalendar';
-import TaxesAnimation from './illustrations/TaxesAnimation';
 
 type Tab = 'tva' | 'is' | 'ir' | 'cnss' | 'calendar';
 
@@ -320,7 +319,7 @@ const TaxesPage: React.FC = () => {
       </div>
       
       <div className="max-w-sm mx-auto mb-10">
-          <TaxesAnimation />
+          
       </div>
 
       <div className="max-w-4xl mx-auto">
@@ -351,7 +350,7 @@ const TaxesPage: React.FC = () => {
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t('taxPortalsTitle')}</h2>
             <p className="mt-2 text-gray-600 dark:text-gray-300">{t('taxPortalsSubtitle')}</p>
         </div>
-        <div className="grid md:grid-cols-2 gap-8 stagger-children">
+        <div className="grid md:grid-cols-2 gap-8">
             <TaxLinkCard
                 title={t('simplCombinedTitle')}
                 description={t('simplCombinedDesc')}
