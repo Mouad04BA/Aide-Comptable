@@ -40,7 +40,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
   const { language, setLanguage, t } = useLanguage();
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileLangMenuOpen, setIsMobileLangMenuOpen] = useState(false);
 
   const languages: { code: Language; name: string }[] = [
     { code: 'ar', name: 'العربية' },
@@ -51,7 +50,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
   const handleLanguageChange = (langCode: Language) => {
     setLanguage(langCode);
     setIsLangMenuOpen(false);
-    setIsMobileLangMenuOpen(false);
     setIsMobileMenuOpen(false); // Close mobile menu on language change
   };
 
@@ -67,6 +65,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
     { page: Page.ChartOfAccounts, label: t('navChartOfAccounts') },
     { page: Page.Taxes, label: t('navTaxes') },
     { page: Page.Resources, label: t('navResources') },
+    { page: Page.Jobs, label: t('navJobs') },
   ];
   
   const themeToggleButton = (
@@ -115,15 +114,15 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
                     <NavLink key={item.page} page={item.page} currentPage={currentPage} onPageChange={onPageChange}>{item.label}</NavLink>
                 ))}
             </div>
-            <div className="flex items-center gap-4">
-              <div className="relative hidden md:block">
+            <div className="flex items-center gap-2 md:gap-4">
+              <div className="relative">
                 <button
                   onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
                   className="flex items-center p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
                   aria-label="Change language"
                 >
                   <PlanetIcon className="h-5 w-5" />
-                  <span className="mx-1 font-medium text-sm">{language.toUpperCase()}</span>
+                  <span className="hidden md:inline mx-1 font-medium text-sm">{language.toUpperCase()}</span>
                 </button>
                 {isLangMenuOpen && (
                   <div className="absolute top-full ltr:right-0 rtl:left-0 mt-2 w-36 bg-white dark:bg-dark-card rounded-md shadow-lg py-1 z-50 ring-1 ring-black ring-opacity-5">
@@ -140,9 +139,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
                 )}
               </div>
               
-              <div className="hidden md:block">
-                {themeToggleButton}
-              </div>
+              {themeToggleButton}
 
               {/* Mobile Menu Button */}
               <div className="md:hidden">
@@ -178,43 +175,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
                       {item.label}
                     </button>
                 ))}
-                <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
-                
-                {/* Language Selector */}
-                <div>
-                    <button onClick={() => setIsMobileLangMenuOpen(prev => !prev)} className="flex justify-between items-center w-full px-4 py-3 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card">
-                        <span className="flex items-center">
-                            <PlanetIcon className="h-5 w-5 mr-3 rtl:ml-3" />
-                            {t('changeLanguage')}
-                        </span>
-                         <svg className={`w-5 h-5 transform transition-transform duration-200 ${isMobileLangMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isMobileLangMenuOpen ? 'max-h-48' : 'max-h-0'}`}>
-                      <div className="pt-2 pl-8 rtl:pr-8 flex flex-col items-start gap-1">
-                          {languages.map(lang => (
-                              <button
-                                  key={lang.code}
-                                  onClick={() => handleLanguageChange(lang.code)}
-                                  className={`w-full text-left ltr:text-left rtl:text-right px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
-                                      language === lang.code
-                                      ? 'bg-primary-dark/10 text-primary-dark dark:bg-primary-dark/20 dark:text-white'
-                                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card'
-                                  }`}
-                              >
-                                  {lang.name}
-                              </button>
-                          ))}
-                      </div>
-                    </div>
-                </div>
-
-                {/* Theme Toggle in Mobile Menu */}
-                <div className="flex justify-between items-center w-full px-4 py-3 rounded-md">
-                    <span className="flex items-center text-base font-medium text-gray-600 dark:text-gray-300">
-                        {t('themeToggleLabel')}
-                    </span>
-                    {themeToggleButton}
-                </div>
             </div>
         </div>
       </nav>

@@ -20,23 +20,100 @@ const formatCurrency = (value: number, language: 'ar' | 'fr' | 'en') => {
   }).format(value);
 };
 
+// FIX: The multi-line comment block was causing parsing errors due to nested "*/" sequences.
+// Switched to single-line comments to ensure the entire block is correctly ignored by the parser.
+// ---
+// Alternative Solution 2: CSS-only (as requested for reference)
+// This method avoids extra HTML elements by styling the <input> directly with a background image.
+// It's a clever trick but is less flexible and accessible than the HTML wrapper method implemented below.
+//
+// How to implement:
+// 1. Add a custom class to the <input>, e.g., `currency-input-css-only`.
+// 2. Add the corresponding CSS to your stylesheet (e.g., in the <style> tag in index.html).
+//
+// --- Example CSS ---
+//
+// <style>
+// .currency-input-css-only {
+//   /*
+//     1. Create the prefix using an SVG background image.
+//     This creates "MAD" as text inside an SVG, which is then used as the input's background.
+//     The fill color is for light mode.
+//   */
+//   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='55' height='48'%3E%3Ctext x='12' y='32' font-family='monospace' font-size='18' fill='%236b7280'%3EMAD%3C/text%3E%3C/svg%3E");
+//   background-repeat: no-repeat;
+//   
+//   /* 2. Position the prefix on the left side, vertically centered. */
+//   background-position: left center;
+//   
+//   /* 3. `padding-left` creates space so the typed number does not overlap the prefix. */
+//   padding-left: 55px; /* Adjust as needed based on prefix width. */
+//   
+//   /* 4. `text-align: right` pushes the number to the far side, which is natural for currency. */
+//   text-align: right;
+//
+//   /*
+//     5. The `direction` property can also control text flow. `direction: rtl` would make
+//     the cursor start on the right, which can feel intuitive for numbers, but it can
+//     sometimes affect placeholder alignment unexpectedly. `text-align: right` is generally safer.
+//   */
+// }
+//
+// /* Handle dark mode by changing the SVG fill color */
+// html.dark .currency-input-css-only {
+//   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='55' height='48'%3E%3Ctext x='12' y='32' font-family='monospace' font-size='18' fill='%239ca3af'%3EMAD%3C/text%3E%3C/svg%3E");
+// }
+//
+// /* Handle RTL by flipping the background position and padding */
+// html[dir="rtl"] .currency-input-css-only {
+//   background-position: right center;
+//   padding-left: 12px;  /* Reset left padding */
+//   padding-right: 55px; /* Add right padding */
+// }
+// </style>
+
+
 const InputGroup: React.FC<{ id: string, label: string, value: string, onChange: (e: React.ChangeEvent<HTMLInputElement>) => void, placeholder?: string }> = ({ id, label, value, onChange, placeholder }) => (
     <div>
         <label htmlFor={id} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{label}</label>
+        {/* 
+          Solution 1: HTML Wrapper + CSS (Implemented here)
+          This is the most robust and accessible method. A wrapper `div` with `position: relative`
+          allows us to absolutely position the currency prefix inside the visual space of the input field
+          without it being part of the input itself, thus preventing text overlap.
+        */}
         <div className="relative">
+            {/* 
+              The currency prefix <span>.
+              - 'position: absolute': Takes the element out of the normal document flow.
+              - 'inset-y-0 ltr:left-0 rtl:right-0': Pins it vertically and to the start side (left for LTR, right for RTL).
+              - 'flex items-center': Vertically centers the text.
+              - 'pointer-events-none': Allows clicks/focus to pass through to the input field underneath.
+            */}
+            <span id={`${id}-currency`} className="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center ltr:pl-3 rtl:pr-3 text-gray-500 dark:text-gray-400 pointer-events-none">
+                MAD
+            </span>
             <input
                 type="number"
                 id={id}
                 value={value}
                 onChange={onChange}
                 placeholder={placeholder || "0"}
-                className="w-full p-3 bg-gray-50 dark:bg-dark-bg border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors dark:text-white text-lg font-mono text-right"
+                /*
+                  Input field styling for currency.
+                  - 'ltr:pl-12 rtl:pr-12': Adds significant padding on the start side to make space for the "MAD" prefix
+                    and prevent the typed text from overlapping it.
+                  - 'ltr:pr-3 rtl:pl-3': Adds normal padding on the end side.
+                  - 'text-right': Aligns the number input to the right, which is standard for numerical inputs,
+                    making it easier to read and compare values.
+                */
+                className="w-full p-3 ltr:pl-12 rtl:pr-12 ltr:pr-3 rtl:pl-3 bg-gray-50 dark:bg-dark-bg border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors dark:text-white text-lg font-mono text-right"
                 aria-describedby={`${id}-currency`}
             />
-            <span id={`${id}-currency`} className="absolute inset-y-0 ltr:right-0 rtl:left-0 pr-3 rtl:pl-3 flex items-center text-gray-500 dark:text-gray-400">MAD</span>
         </div>
     </div>
 );
+
 
 const ResultRow: React.FC<{ label: string, value: string, isMain?: boolean }> = ({ label, value, isMain = false }) => (
     <div className={`flex justify-between items-center ${isMain ? 'py-2' : ''}`}>
@@ -48,17 +125,49 @@ const ResultRow: React.FC<{ label: string, value: string, isMain?: boolean }> = 
 const TVACalculator = () => {
   const { t, language } = useLanguage();
   const [amountHT, setAmountHT] = useState('');
+  const [amountTTC, setAmountTTC] = useState('');
   const [tvaRate, setTvaRate] = useState(0.20);
+  const [lastEdited, setLastEdited] = useState<'ht' | 'ttc'>('ht');
 
-  const { tvaAmount, amountTTC } = useMemo(() => {
-    const ht = parseFloat(amountHT);
-    if (!isNaN(ht) && ht >= 0) {
-      const tva = ht * tvaRate;
-      const ttc = ht + tva;
-      return { tvaAmount: tva, amountTTC: ttc };
+  // Effect to calculate TTC from HT
+  useEffect(() => {
+    if (lastEdited === 'ht') {
+      const ht = parseFloat(amountHT);
+      if (amountHT === '' || isNaN(ht)) {
+        setAmountTTC('');
+      } else {
+        setAmountTTC(parseFloat((ht * (1 + tvaRate)).toFixed(4)).toString());
+      }
     }
-    return { tvaAmount: 0, amountTTC: 0 };
+  }, [amountHT, tvaRate, lastEdited]);
+
+  // Effect to calculate HT from TTC
+  useEffect(() => {
+    if (lastEdited === 'ttc') {
+      const ttc = parseFloat(amountTTC);
+      if (amountTTC === '' || isNaN(ttc)) {
+        setAmountHT('');
+      } else {
+        setAmountHT(parseFloat((ttc / (1 + tvaRate)).toFixed(4)).toString());
+      }
+    }
+  }, [amountTTC, tvaRate, lastEdited]);
+
+  const handleHTChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLastEdited('ht');
+    setAmountHT(e.target.value);
+  };
+
+  const handleTTCChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLastEdited('ttc');
+    setAmountTTC(e.target.value);
+  };
+  
+  const tvaAmount = useMemo(() => {
+    const ht = parseFloat(amountHT);
+    return !isNaN(ht) ? ht * tvaRate : 0;
   }, [amountHT, tvaRate]);
+
 
   const tvaRates = useMemo(() => [
     { value: 0.20, label: t('standardRateOption') },
@@ -71,7 +180,9 @@ const TVACalculator = () => {
     <div className="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-lg">
         <h2 className="text-2xl font-bold text-center mb-6 text-primary-dark">{t('tvaCalculatorTitle')}</h2>
         <div className="space-y-6">
-            <InputGroup id="amount-ht" label={t('amountHTLabel')} value={amountHT} onChange={(e) => setAmountHT(e.target.value)} />
+            <InputGroup id="amount-ht" label={t('amountHTLabel')} value={amountHT} onChange={handleHTChange} />
+            <InputGroup id="amount-ttc" label={t('amountTTCLabel')} value={amountTTC} onChange={handleTTCChange} />
+
             <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">{t('tvaRateLabel')}</label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -92,8 +203,7 @@ const TVACalculator = () => {
             </div>
             <div className="border-t border-gray-200 dark:border-gray-700 my-6"></div>
             <div className="space-y-4 text-right rtl:text-left">
-                <ResultRow label={t('tvaAmountLabel')} value={formatCurrency(tvaAmount, language)} />
-                <ResultRow label={t('amountTTCLabel')} value={formatCurrency(amountTTC, language)} isMain />
+                <ResultRow label={t('tvaAmountLabel')} value={formatCurrency(tvaAmount, language)} isMain />
             </div>
         </div>
     </div>

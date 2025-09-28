@@ -41,6 +41,11 @@ export const translations: Translations = {
     fr: "Ressources",
     en: "Resources",
   },
+  navJobs: {
+    ar: "عروض",
+    fr: "Offres",
+    en: "Offers",
+  },
   navVideoStudio: {
     ar: "استوديو الفيديو",
     fr: "Studio Vidéo",
@@ -889,8 +894,24 @@ export const translations: Translations = {
     en: "Incorrect.",
   },
   themeToggleLabel: {
-    ar: "تبديل المظهر",
-    fr: "Basculer le thème",
-    en: "Toggle Theme",
+    ar: "السمة",
+    fr: "Thème",
+    en: "Theme",
+  },
+  // Jobs Page
+  jobsTitle: {
+    ar: "عروض الشغل والتدريب",
+    fr: "Offres d'Emploi & de Stage",
+    en: "Job & Internship Offers",
+  },
+  jobsComingSoon: {
+    ar: "هذا القسم قيد الإنشاء حالياً.",
+    fr: "Cette section est actuellement en construction.",
+    en: "This section is currently under construction.",
+  },
+  jobsStayTuned: {
+    ar: "نعمل بجد لنقدم لكم أفضل الفرص. تحققوا مرة أخرى قريبا!",
+    fr: "Nous travaillons dur pour vous proposer les meilleures opportunités. Revenez bientôt !",
+    en: "We are working hard to bring you the best opportunities. Check back soon!",
   },
 };

@@ -7,6 +7,7 @@ import SimulatorPage from './components/SimulatorPage';
 import ChartOfAccountsPage from './components/ChartOfAccountsPage';
 import TaxesPage from './components/TaxesPage';
 import ResourcesPage from './components/ResourcesPage';
+import JobsPage from './components/JobsPage';
 import { LanguageProvider } from './contexts/LanguageContext';
 
 const App: React.FC = () => {
@@ -41,6 +42,8 @@ const App: React.FC = () => {
         return <TaxesPage />;
       case Page.Resources:
         return <ResourcesPage />;
+      case Page.Jobs:
+        return <JobsPage />;
       case Page.Home:
       default:
         return <HomePage onPageChange={handlePageChange} />;

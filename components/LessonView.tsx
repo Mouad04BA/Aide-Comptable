@@ -65,9 +65,42 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
 
 
   const formatContent = (text: string) => {
-    return text.split('**').map((part, index) =>
-      index % 2 === 1 ? <strong key={index}>{part}</strong> : part
-    );
+    const elements: React.ReactNode[] = [];
+    const lines = text.trim().split('\n');
+    let listItems: React.ReactNode[] = [];
+
+    const processBold = (line: string): React.ReactNode[] => {
+      return line.split('**').map((part, index) =>
+        index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+      );
+    };
+
+    const flushList = () => {
+      if (listItems.length > 0) {
+        elements.push(
+          <ul key={`ul-${elements.length}`} className="list-disc ltr:pl-5 rtl:pr-5 space-y-2">
+            {listItems}
+          </ul>
+        );
+        listItems = [];
+      }
+    };
+
+    lines.forEach((line, index) => {
+      const trimmedLine = line.trim();
+      if (trimmedLine.startsWith('- ')) {
+        listItems.push(<li key={`li-${index}`}>{processBold(trimmedLine.substring(2))}</li>);
+      } else {
+        flushList();
+        if (trimmedLine) {
+          elements.push(<p key={`p-${index}`}>{processBold(trimmedLine)}</p>);
+        }
+      }
+    });
+
+    flushList(); // Process any remaining list items
+
+    return elements;
   };
   
   const renderTD = () => {
@@ -212,9 +245,18 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
   return (
     <div className="container mx-auto px-6 py-12">
       <div className="max-w-4xl mx-auto">
+        <div className="mb-6">
+            <button
+              onClick={onBack}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-semibold rounded-lg shadow-sm transition-all"
+            >
+              &larr; {t('backToLessons')}
+            </button>
+        </div>
+
         <article className="bg-white dark:bg-dark-card p-8 rounded-xl shadow-md">
           <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">{lesson.title[language]}</h1>
-          <div className="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">
+          <div className="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
             {formatContent(lesson.content[language])}
           </div>
           {renderTD()}
@@ -225,22 +267,15 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
             <button
                 onClick={() => previousLesson && onNavigate(previousLesson.id)}
                 disabled={!previousLesson}
-                className="px-6 py-3 text-sm font-medium rounded-lg transition-all transform flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 enabled:hover:bg-gray-300 enabled:dark:hover:bg-gray-600 enabled:hover:scale-105 disabled:bg-gray-100 disabled:dark:bg-gray-800 disabled:text-gray-500 disabled:dark:text-gray-500 disabled:cursor-not-allowed"
+                className="px-6 py-3 text-sm font-medium rounded-lg transition-all transform flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 enabled:hover:bg-gray-300 enabled:dark:hover:bg-gray-600 enabled:hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 &larr; {t('previousLesson')}
             </button>
 
             <button
-                onClick={onBack}
-                className="px-6 py-3 text-sm font-semibold text-white bg-primary hover:bg-primary/90 rounded-lg shadow-md transition-all transform hover:scale-105"
-            >
-                {t('backToLessons')}
-            </button>
-
-            <button
                 onClick={() => nextLesson && onNavigate(nextLesson.id)}
                 disabled={!nextLesson}
-                className="px-6 py-3 text-sm font-medium rounded-lg transition-all transform flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 enabled:hover:bg-gray-300 enabled:dark:hover:bg-gray-600 enabled:hover:scale-105 disabled:bg-gray-100 disabled:dark:bg-gray-800 disabled:text-gray-500 disabled:dark:text-gray-500 disabled:cursor-not-allowed"
+                className="px-6 py-3 text-sm font-medium rounded-lg transition-all transform flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 enabled:hover:bg-gray-300 enabled:dark:hover:bg-gray-600 enabled:hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 {t('nextLesson')} &rarr;
             </button>

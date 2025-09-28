@@ -7,6 +7,7 @@ import SparklesIcon from './icons/SparklesIcon';
 import DocumentTextIcon from './icons/DocumentTextIcon';
 import UpcomingDeadlineReminder from './UpcomingDeadlineReminder';
 import ScrollAnimationWrapper from './ScrollAnimationWrapper';
+import AnimatedAccountant from './illustrations/AnimatedAccountant';
 
 interface HomePageProps {
   onPageChange: (page: Page) => void;
@@ -63,7 +64,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
                 </div>
             </ScrollAnimationWrapper>
              <div className="hidden md:flex justify-center items-center">
-                
+                <AnimatedAccountant className="w-full max-w-md lg:max-w-lg" />
             </div>
         </div>
         
