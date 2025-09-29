@@ -94,6 +94,19 @@
       .stagger-delay-6 { transition-delay: 600ms; }
       .stagger-delay-7 { transition-delay: 700ms; }
       .stagger-delay-8 { transition-delay: 800ms; }
+
+      /* --- Responsive Header Layout Fix --- */
+      /*
+        On tablet screen sizes (between 768px and 1024px), the navigation
+        links can crowd the header. This rule reduces the horizontal padding
+        to provide more space and prevent content from being cut off.
+      */
+      @media (min-width: 768px) and (max-width: 1024px) {
+        .header-nav-container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
     </style>
   <script type="importmap">
 {

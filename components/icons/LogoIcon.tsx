@@ -2,7 +2,7 @@
 import React from 'react';
 
 const LogoIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg {...props} viewBox="0 0 100 85" xmlns="">
+  <svg {...props} viewBox="0 0 100 85" xmlns="http://www.w3.org/2000/svg">
     <g>
       {/* Document */}
       <path d="M56 12 H 84 C 85 12, 86 13, 86 14 V 62 L 71 77 H 56 V 12 Z" fill="#0d9488" opacity="0.7" />

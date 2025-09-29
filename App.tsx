@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Page } from './types';
 import Header from './components/Header';
-import HomePage from './components/HomePage';
+import { HomePage } from './components/HomePage';
 import CoursePage from './components/CoursePage';
 import SimulatorPage from './components/SimulatorPage';
 import ChartOfAccountsPage from './components/ChartOfAccountsPage';
