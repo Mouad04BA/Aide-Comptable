@@ -73,6 +73,7 @@ const AccountingSimulator: React.FC = () => {
     return (
         <div>
             <div className="max-w-3xl mx-auto mt-8 bg-white dark:bg-dark-card p-6 rounded-xl shadow-lg">
+                <div className="flex flex-col gap-4">
                 <textarea
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
@@ -80,22 +81,22 @@ const AccountingSimulator: React.FC = () => {
                     className="w-full h-28 p-3 bg-gray-50 dark:bg-dark-bg border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors dark:text-white"
                     disabled={isLoading}
                 />
-                <div className="flex gap-4 mt-4">
+                <div className="flex gap-4">
                     <button
                     onClick={handleAnalyze}
                     disabled={isLoading}
-                    className="flex-grow px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md disabled:bg-gray-400 disabled:cursor-not-allowed transition-all transform hover:scale-105 active:scale-95 disabled:scale-100"
+                    className="flex-grow px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md disabled:bg-gray-400 disabled:cursor-not-allowed transition-all transform hover:scale-105 disabled:scale-100"
                     >
                     {isLoading ? t('analyzingButton') : t('analyzeButton')}
                     </button>
                     <button
                     onClick={handleNewOperation}
-                    className="px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white font-semibold rounded-lg shadow-md transition-all transform hover:scale-105 active:scale-95"
+                    className="px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white font-semibold rounded-lg shadow-md transition-all transform hover:scale-105"
                     >
                     {t('newOperationButton')}
                     </button>
                 </div>
-                <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-4">{t('aiDisclaimer')}</p>
+                </div>
             </div>
             
             {isLoading && <LoadingSpinner />}
@@ -211,18 +212,17 @@ const FiscalAnalysisSimulator: React.FC = () => {
             <button
               onClick={handleAnalyze}
               disabled={isLoading}
-              className="flex-grow px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md disabled:bg-gray-400 disabled:cursor-not-allowed transition-all transform hover:scale-105 active:scale-95 disabled:scale-100"
+              className="flex-grow px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md disabled:bg-gray-400 disabled:cursor-not-allowed transition-all transform hover:scale-105 disabled:scale-100"
             >
               {isLoading ? t('analyzingButton') : t('analyzeButton')}
             </button>
             <button
               onClick={handleNewOperation}
-              className="px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white font-semibold rounded-lg shadow-md transition-all transform hover:scale-105 active:scale-95"
+              className="px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white font-semibold rounded-lg shadow-md transition-all transform hover:scale-105"
             >
               {t('newOperationButton')}
             </button>
           </div>
-          <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-4">{t('aiDisclaimer')}</p>
       </div>
       
       {isLoading && <LoadingSpinner />}
@@ -307,18 +307,17 @@ const FiscalQASimulator: React.FC = () => {
             <button
               onClick={handleAsk}
               disabled={isLoading}
-              className="flex-grow px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md disabled:bg-gray-400 disabled:cursor-not-allowed transition-all transform hover:scale-105 active:scale-95 disabled:scale-100"
+              className="flex-grow px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md disabled:bg-gray-400 disabled:cursor-not-allowed transition-all transform hover:scale-105 disabled:scale-100"
             >
               {isLoading ? t('analyzingButton') : t('askButton')}
             </button>
             <button
               onClick={handleNew}
-              className="px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white font-semibold rounded-lg shadow-md transition-all transform hover:scale-105 active:scale-95"
+              className="px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white font-semibold rounded-lg shadow-md transition-all transform hover:scale-105"
             >
               {t('newOperationButton')}
             </button>
           </div>
-          <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-4">{t('aiDisclaimer')}</p>
       </div>
       
       {isLoading && <LoadingSpinner />}

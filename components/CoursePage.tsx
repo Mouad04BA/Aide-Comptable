@@ -4,34 +4,31 @@ import { courseData } from '../data/courseData';
 import { Lesson } from '../types';
 import LessonView from './LessonView';
 import ScrollAnimationWrapper from './ScrollAnimationWrapper';
-import QuestionMarkCircleIcon from './icons/QuestionMarkCircleIcon';
-import PencilSquareIcon from './icons/PencilSquareIcon';
-import CheckIcon from './icons/CheckIcon';
 
 const LessonCard: React.FC<{ lesson: Lesson; onSelect: () => void; isCompleted: boolean; }> = ({ lesson, onSelect, isCompleted }) => {
   const { language, t } = useLanguage();
   return (
     <button
       onClick={onSelect}
-      className="w-full text-left bg-white dark:bg-dark-card p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-100"
+      className="w-full text-left bg-white dark:bg-dark-card p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105"
     >
       <div className="flex justify-between items-start mb-2">
         <h2 className="text-xl font-bold text-primary-dark pr-4">{lesson.title[language]}</h2>
         <div className="flex-shrink-0 flex items-center gap-2">
           {isCompleted && (
-            <div title={t('lessonCompleted')} className="flex items-center justify-center h-7 w-7 bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-200 rounded-full">
-              <CheckIcon className="h-4 w-4" />
-            </div>
+            <span className="text-xs font-semibold bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-200 px-2.5 py-1 rounded-full">
+              ✓
+            </span>
           )}
           {lesson.td && (
-            <div title={t('lessonContainsTD')} className="flex items-center justify-center h-7 w-7 bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 rounded-full">
-              <PencilSquareIcon className="h-4 w-4" />
-            </div>
+            <span className="text-xs font-semibold bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 px-2.5 py-1 rounded-full">
+              {t('lessonContainsTD')}
+            </span>
           )}
           {lesson.quiz && (
-             <div title={t('lessonContainsQuiz')} className="flex items-center justify-center h-7 w-7 bg-secondary/10 text-secondary-dark dark:bg-secondary/20 dark:text-secondary rounded-full">
-              <QuestionMarkCircleIcon className="h-5 w-5" />
-            </div>
+            <span className="text-xs font-semibold bg-secondary/10 text-secondary-dark dark:bg-secondary/20 dark:text-secondary px-2.5 py-1 rounded-full">
+              {t('lessonContainsQuiz')}
+            </span>
           )}
         </div>
       </div>
