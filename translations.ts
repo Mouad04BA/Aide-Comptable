@@ -77,10 +77,50 @@ export const translations: Translations = {
     fr: "Commencer à apprendre",
     en: "Start Learning",
   },
-  homeFeaturesTitle: {
-    ar: "استكشف أدواتنا",
-    fr: "Explorez nos outils",
-    en: "Explore Our Tools",
+  homeWhyTitle: {
+    ar: "الطريقة الأذكى لإتقان المحاسبة",
+    fr: "La Voie Intelligente pour Maîtriser la Comptabilité",
+    en: "The Smartest Way to Master Accounting",
+  },
+  homeWhySubtitle: {
+    ar: "نحن نجمع بين الدروس الواضحة والأدوات القوية لمساعدتك على النجاح.",
+    fr: "Nous combinons leçons claires et outils puissants pour vous aider à réussir.",
+    en: "We combine clear lessons with powerful tools to help you succeed.",
+  },
+  benefit1Title: {
+    ar: "مسار تعليمي تفاعلي",
+    fr: "Parcours d'Apprentissage Interactif",
+    en: "Interactive Learning Path",
+  },
+  benefit1Desc: {
+    ar: "من الأساسيات إلى المواضيع المتقدمة مع تمارين واختبارات تعزز معرفتك.",
+    fr: "Des bases aux sujets avancés avec des quiz et exercices qui renforcent vos connaissances.",
+    en: "From basics to advanced topics with quizzes and exercises that reinforce your knowledge.",
+  },
+  benefit2Title: {
+    ar: "ممارسة مدعومة بالذكاء الاصطناعي",
+    fr: "Pratique Assistée par l'IA",
+    en: "AI-Powered Practice",
+  },
+  benefit2Desc: {
+    ar: "استخدم محاكياتنا الذكية لتحليل سيناريوهات محاسبية وضريبية واقعية على الفور.",
+    fr: "Utilisez nos simulateurs intelligents pour analyser instantanément des scénarios comptables et fiscaux réels.",
+    en: "Use our smart simulators to analyze real-world accounting and tax scenarios instantly.",
+  },
+  benefit3Title: {
+    ar: "مصادر جاهزة للمهنة",
+    fr: "Ressources Orientées Carrière",
+    en: "Career-Ready Resources",
+  },
+  benefit3Desc: {
+    ar: "الوصول إلى دليل الحسابات الرسمي وحاسبات الضرائب والأدلة لبناء مهارات عملية.",
+    fr: "Accédez au plan comptable officiel, aux calculateurs d'impôts et aux guides pour développer des compétences pratiques.",
+    en: "Access the official chart of accounts, tax calculators, and guides to build practical skills.",
+  },
+  homeCoreToolsTitle: {
+    ar: "استكشف أدواتنا الأساسية",
+    fr: "Explorez Nos Outils Clés",
+    en: "Explore Our Core Tools",
   },
   featureCoursesTitle: {
     ar: "دروس تفاعلية",
@@ -235,6 +275,11 @@ export const translations: Translations = {
     ar: "أعمال موجهة",
     fr: "TD",
     en: "TD",
+  },
+  lessonCompleted: {
+    ar: "مكتمل",
+    fr: "Terminé",
+    en: "Completed",
   },
   tdTitle: {
     ar: "أعمال موجهة (TD)",
@@ -465,6 +510,26 @@ export const translations: Translations = {
   tabIR: { ar: "ض.د", fr: "IR", en: "Income Tax" },
   tabCNSS: { ar: "ض.ج", fr: "CNSS", en: "Social Sec." },
   tabCalendar: { ar: "الجدول", fr: "Calendrier", en: "Calendar" },
+  tvaDef: {
+    ar: "الضريبة على القيمة المضافة (TVA): هي ضريبة غير مباشرة على الاستهلاك، تقوم الشركات بفوترتها ويدفعها المستهلك النهائي.",
+    fr: "Taxe sur la Valeur Ajoutée (TVA) : C'est un impôt indirect sur la consommation, facturé par les entreprises et payé par le consommateur final.",
+    en: "Value Added Tax (VAT): It's an indirect tax on consumption, invoiced by businesses and paid by the final consumer.",
+  },
+  isDef: {
+    ar: "الضريبة على الشركات (IS): هي ضريبة مباشرة تطبق على الأرباح التي تحققها الشركات والأشخاص الاعتباريون الآخرون.",
+    fr: "Impôt sur les Sociétés (IS) : C'est un impôt direct qui s'applique aux bénéfices réalisés par les sociétés et autres personnes morales.",
+    en: "Corporate Tax (IS): It's a direct tax that applies to profits made by companies and other legal entities.",
+  },
+  irDef: {
+    ar: "الضريبة على الدخل (IR): هي ضريبة مباشرة تطبق على دخل الأشخاص الطبيعيين، مثل الرواتب أو الدخل المهني.",
+    fr: "Impôt sur le Revenu (IR) : C'est un impôt direct qui s'applique aux revenus des personnes physiques, comme les salaires ou les revenus professionnels.",
+    en: "Income Tax (IR): It's a direct tax that applies to the income of individuals, such as salaries or professional income.",
+  },
+  cnssDef: {
+    ar: "الصندوق الوطني للضمان الاجتماعي (CNSS): هو الهيئة التي تدير نظام الضمان الاجتماعي (التقاعد، التأمين الصحي، إلخ). الاشتراكات إلزامية للموظفين وأرباب العمل.",
+    fr: "Caisse Nationale de Sécurité Sociale (CNSS) : C'est l'organisme qui gère le régime de sécurité sociale (retraite, assurance maladie, etc.). Les cotisations sont obligatoires pour les salariés et les employeurs.",
+    en: "National Social Security Fund (CNSS): It's the organization that manages the social security system (pension, health insurance, etc.). Contributions are mandatory for employees and employers.",
+  },
   // TVA Calculator
   tvaCalculatorTitle: {
     ar: "حاسبة الضريبة على القيمة المضافة (TVA)",
@@ -713,8 +778,8 @@ export const translations: Translations = {
   },
   resourceCnssTitle: {
     ar: "أدلة الصندوق الوطني للضمان الاجتماعي",
-    fr: "Manuels de la CNSS",
-    en: "CNSS Manuals",
+    fr: "Guides de la CNSS",
+    en: "CNSS Guides",
   },
   resourceCnssDesc: {
     ar: "أدلة وإجراءات عملية تتعلق بالتصريحات والاشتراكات والخدمات التي يقدمها الصندوق الوطني للضمان الاجتماعي.",
@@ -756,36 +821,6 @@ export const translations: Translations = {
     fr: "Consulter le B.O.",
     en: "Consult the B.O.",
   },
-  resourceOmpicTitle: {
-    ar: "المكتب المغربي للملكية الصناعية والتجارية (OMPIC)",
-    fr: "Office Marocain de la Propriété Industrielle et Commerciale (OMPIC)",
-    en: "Moroccan Office for Industrial and Commercial Property (OMPIC)",
-  },
-  resourceOmpicDesc: {
-    ar: "المكتب المسؤول عن السجل التجاري المركزي. ضروري لإنشاء الشركات والمعلومات القانونية حولها.",
-    fr: "L'office en charge du registre central du commerce. Essentiel pour la création d'entreprise et les informations légales sur les sociétés.",
-    en: "The office in charge of the central trade register. Essential for business creation and legal information about companies.",
-  },
-  resourceOmpicLink: {
-    ar: "استكشاف OMPIC",
-    fr: "Explorer l'OMPIC",
-    en: "Explore OMPIC",
-  },
-  resourceOmpicCreationTitle: {
-    ar: "دليل إنشاء المقاولات",
-    fr: "Guide de la Création d'Entreprise",
-    en: "Business Creation Guide",
-  },
-  resourceOmpicCreationDesc: {
-    ar: "دليل رسمي من OMPIC يشرح الإجراءات خطوة بخطوة لإنشاء مقاولتك في المغرب.",
-    fr: "Le guide officiel de l'OMPIC qui détaille les procédures pas à pas pour créer votre entreprise au Maroc.",
-    en: "The official OMPIC guide detailing the step-by-step procedures for creating your business in Morocco.",
-  },
-  resourceOmpicCreationLink: {
-    ar: "تحميل الدليل",
-    fr: "Télécharger le guide",
-    en: "Download the guide",
-  },
   resourceProcedureTitle: {
     ar: "معالجة صعوبات المقاولة",
     fr: "Traitement des Difficultés de l'Entreprise",
@@ -815,6 +850,21 @@ export const translations: Translations = {
     ar: "عرض الدليل الضريبي",
     fr: "Voir le guide fiscal",
     en: "View the tax guide",
+  },
+  resourceCmrTitle: {
+    ar: "الصندوق المغربي للتقاعد (CMR)",
+    fr: "Caisse Marocaine des Retraites (CMR)",
+    en: "Moroccan Pension Fund (CMR)",
+  },
+  resourceCmrDesc: {
+    ar: "البوابة الرسمية للصندوق المغربي للتقاعد، لتدبير معاشات التقاعد في القطاع العام.",
+    fr: "Le portail officiel de la CMR, pour la gestion des pensions de retraite du secteur public.",
+    en: "The official portal for the CMR, managing public sector retirement pensions.",
+  },
+  resourceCmrLink: {
+    ar: "زيارة الموقع",
+    fr: "Visiter le site",
+    en: "Visit the site",
   },
   // Tax Page Portals
   taxPortalsTitle: {
@@ -914,4 +964,63 @@ export const translations: Translations = {
     fr: "Nous travaillons dur pour vous proposer les meilleures opportunités. Revenez bientôt !",
     en: "We are working hard to bring you the best opportunities. Check back soon!",
   },
+  aiDisclaimer: {
+    ar: "ملاحظة: الذكاء الاصطناعي قد يرتكب أخطاء. يرجى التحقق من الإجابات.",
+    fr: "N.B. : L'IA peut faire des erreurs. Veuillez vérifier les réponses.",
+    en: "Note: The AI can make mistakes. Please verify the answers.",
+  },
+  // Practical Guides Section on Resources Page
+  practicalGuidesTitle: {
+    ar: "أدلة عملية",
+    fr: "Guides Pratiques",
+    en: "Practical Guides",
+  },
+  practicalGuidesSubtitle: {
+    ar: "إجراءات وخطوات مبسطة لأهم العمليات في حياة المقاولة.",
+    fr: "Procédures et étapes simplifiées pour les opérations clés de la vie d'une entreprise.",
+    en: "Simplified procedures and steps for key operations in a company's life.",
+  },
+  guideCreationTitle: {
+    ar: "إنشاء مقاولة",
+    fr: "Création d'Entreprise",
+    en: "Business Creation",
+  },
+  guideCreationDesc: {
+    ar: "الخطوات الأساسية لبدء نشاطك التجاري في المغرب.",
+    fr: "Les étapes fondamentales pour lancer votre activité au Maroc.",
+    en: "The fundamental steps to launch your business in Morocco.",
+  },
+  creationStep1: { ar: "الشهادة السلبية: حجز اسم شركتك.", fr: "Certificat Négatif : Réserver le nom de votre société.", en: "Negative Certificate: Reserve your company's name." },
+  creationStep2: { ar: "النظام الأساسي: صياغة قواعد تشغيل الشركة.", fr: "Statuts : Rédiger les règles de fonctionnement de la société.", en: "Bylaws/Statutes: Draft the company's operating rules." },
+  creationStep3: { ar: "تجميد رأس المال: إيداع رأس المال في البنك.", fr: "Blocage du Capital : Déposer le capital social à la banque.", en: "Capital Blocking: Deposit the share capital in the bank." },
+  creationStep4: { ar: "التسجيلات: الضريبة المهنية، السجل التجاري، والمعرف الضريبي.", fr: "Enregistrements : Taxe Pro., Registre de Commerce (RC), Identifiant Fiscal (IF).", en: "Registrations: Professional Tax, Commercial Registry (RC), Tax ID (IF)." },
+  creationStep5: { ar: "الانخراط في CNSS: تسجيل الشركة والموظفين.", fr: "Affiliation CNSS : Inscrire l'entreprise et les salariés.", en: "CNSS Affiliation: Register the company and employees." },
+  creationStep6: { ar: "النشر القانوني: إعلان في جريدة قانونية والجريدة الرسمية.", fr: "Publications Légales : Annonce dans un journal légal et au Bulletin Officiel.", en: "Legal Publications: Announcement in a legal journal and the Official Gazette." },
+  guideDifficultiesTitle: {
+    ar: "مساطر صعوبات المقاولة",
+    fr: "Difficultés de l'Entreprise",
+    en: "Business Difficulties",
+  },
+  guideDifficultiesDesc: {
+    ar: "فهم الآليات القانونية في حالة الصعوبات المالية.",
+    fr: "Comprendre les mécanismes légaux en cas de difficultés financières.",
+    en: "Understanding the legal mechanisms in case of financial difficulties.",
+  },
+  difficultiesPrevention: { ar: "الوقاية: إجراءات لتوقع ومعالجة المشاكل قبل التوقف عن الدفع.", fr: "Prévention : Procédures pour anticiper et traiter les problèmes avant la cessation de paiement.", en: "Prevention: Procedures to anticipate and address problems before cessation of payment." },
+  difficultiesRecovery: { ar: "التسوية القضائية: للحفاظ على النشاط والوظائف وتسوية الديون.", fr: "Redressement Judiciaire : Pour maintenir l'activité, l'emploi et apurer le passif.", en: "Judicial Recovery: To maintain activity, employment, and clear liabilities." },
+  difficultiesLiquidation: { ar: "التصفية القضائية: إنهاء نشاط الشركة لدفع الدائنين.", fr: "Liquidation Judiciaire : Met fin à l'activité pour payer les créanciers.", en: "Judicial Liquidation: Terminates the business activity to pay creditors." },
+  guideActionsTitle: {
+    ar: "الإجراءات القانونية الشائعة",
+    fr: "Actions Juridiques Courantes",
+    en: "Common Legal Actions",
+  },
+  guideActionsDesc: {
+    ar: "العمليات المتكررة في حياة الشركة.",
+    fr: "Opérations fréquentes dans la vie d'une société.",
+    en: "Frequent operations in a company's life.",
+  },
+  actionsAGO: { ar: "الجمع العام العادي (AGO): المصادقة على الحسابات، تخصيص النتائج...", fr: "AGO : Approbation des comptes, affectation du résultat...", en: "Annual General Meeting (AGO): Approval of accounts, allocation of profit..." },
+  actionsCapital: { ar: "زيادة رأس المال: لتمويل النمو أو تعزيز الأموال الخاصة.", fr: "Augmentation de Capital : Pour financer la croissance ou renforcer les fonds propres.", en: "Capital Increase: To finance growth or strengthen equity." },
+  actionsHq: { ar: "نقل المقر الاجتماعي: تغيير العنوان الرسمي للشركة.", fr: "Transfert de Siège Social : Changer l'adresse officielle de l'entreprise.", en: "Head Office Transfer: Change the company's official address." },
+  actionsShares: { ar: "تفويت الحصص الاجتماعية: بيع حصص شريك.", fr: "Cession de Parts Sociales : Vente des parts d'un associé.", en: "Share Transfer: Sale of a partner's shares." },
 };

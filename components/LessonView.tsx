@@ -144,7 +144,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
           <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">{t('quizTitle')}</h2>
           <button
             onClick={handleStartQuiz}
-            className="px-8 py-3 bg-secondary hover:bg-secondary/90 text-white font-semibold rounded-lg shadow-lg transition-transform transform hover:scale-105"
+            className="px-8 py-3 bg-secondary hover:bg-secondary/90 text-white font-semibold rounded-lg shadow-lg transition-transform transform hover:scale-105 active:scale-100"
           >
             {t('startQuiz')}
           </button>
@@ -165,7 +165,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
           <div className="mt-8 text-center">
             <button
               onClick={handleRetakeQuiz}
-              className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-lg transition-transform transform hover:scale-105"
+              className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-lg transition-transform transform hover:scale-105 active:scale-100"
             >
               {t('retakeQuiz')}
             </button>
@@ -197,7 +197,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
             {question.options[language].map((option, oIndex) => {
               const isSelected = selectedOption === oIndex;
               const isCorrect = question.correctAnswerIndex === oIndex;
-              let optionClass = 'w-full text-left p-4 rounded-md border-2 transition-all duration-200 ';
+              let optionClass = 'w-full text-left p-4 rounded-md border-2 transition-all duration-200 transform ';
 
               if (isAnswered) {
                 if (isCorrect) {
@@ -208,7 +208,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
                   optionClass += 'bg-white dark:bg-dark-card border-gray-300 dark:border-gray-600 opacity-60';
                 }
               } else {
-                optionClass += 'bg-white dark:bg-dark-card border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-primary-dark cursor-pointer';
+                optionClass += 'bg-white dark:bg-dark-card border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-primary-dark cursor-pointer hover:scale-[1.02] active:scale-[0.98]';
               }
 
               return (
@@ -232,7 +232,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
             </div>
             <button 
               onClick={handleNext} 
-              className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-lg transition-transform transform hover:scale-105"
+              className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-lg transition-transform transform hover:scale-105 active:scale-100"
             >
               {isLastQuestion ? t('finishQuiz') : t('nextQuestion')}
             </button>
@@ -248,7 +248,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
         <div className="mb-6">
             <button
               onClick={onBack}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-semibold rounded-lg shadow-sm transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-semibold rounded-lg shadow-sm transition-all transform hover:scale-105 active:scale-100"
             >
               &larr; {t('backToLessons')}
             </button>
@@ -267,7 +267,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
             <button
                 onClick={() => previousLesson && onNavigate(previousLesson.id)}
                 disabled={!previousLesson}
-                className="px-6 py-3 text-sm font-medium rounded-lg transition-all transform flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 enabled:hover:bg-gray-300 enabled:dark:hover:bg-gray-600 enabled:hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-3 text-sm font-medium rounded-lg transition-all transform flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 enabled:hover:bg-gray-300 enabled:dark:hover:bg-gray-600 enabled:hover:scale-105 enabled:active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 &larr; {t('previousLesson')}
             </button>
@@ -275,7 +275,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
             <button
                 onClick={() => nextLesson && onNavigate(nextLesson.id)}
                 disabled={!nextLesson}
-                className="px-6 py-3 text-sm font-medium rounded-lg transition-all transform flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 enabled:hover:bg-gray-300 enabled:dark:hover:bg-gray-600 enabled:hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-3 text-sm font-medium rounded-lg transition-all transform flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 enabled:hover:bg-gray-300 enabled:dark:hover:bg-gray-600 enabled:hover:scale-105 enabled:active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 {t('nextLesson')} &rarr;
             </button>
