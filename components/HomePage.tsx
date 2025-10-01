@@ -10,7 +10,7 @@ import DocumentTextIcon from './icons/DocumentTextIcon';
 import LearningGrowthIllustration from './illustrations/LearningGrowthIllustration';
 import DigitalVisionaryIllustration from './illustrations/DigitalVisionaryIllustration';
 import ProfessionalAccountantIllustration from './illustrations/ProfessionalAccountantIllustration';
-import HeroIllustration from './illustrations/HeroIllustration';
+import ModernAccountingIllustration from './illustrations/ModernAccountingIllustration';
 
 interface HomePageProps {
   onPageChange: (page: Page) => void;
@@ -88,7 +88,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
             </div>
             <div className="hidden md:block">
                <ScrollAnimationWrapper staggerIndex={1}>
-                  <HeroIllustration className="w-full h-auto max-w-lg mx-auto"/>
+                  <ModernAccountingIllustration className="w-full h-auto max-w-lg mx-auto"/>
                </ScrollAnimationWrapper>
             </div>
           </div>
