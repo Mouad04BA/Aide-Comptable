@@ -20,9 +20,9 @@ const MainContact: React.FC<{ href: string; icon: React.FC<any>; label: string; 
         <div className={`flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-lg ${iconBgClass}`}>
             <Icon className={`w-8 h-8 ${iconColorClass}`} />
         </div>
-        <div className="ml-4 rtl:mr-4 text-left rtl:text-right">
+        <div className="ml-4 rtl:mr-4 text-left rtl:text-right min-w-0">
             <p className="font-bold text-gray-800 dark:text-white">{label}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors">{subLabel}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors truncate">{subLabel}</p>
         </div>
     </a>
 );
@@ -78,8 +78,8 @@ const ContactSection: React.FC = () => {
                                     icon={WhatsAppIcon}
                                     label={t('contactWhatsAppLabel')}
                                     subLabel="+212 645277163"
-                                    iconBgClass="bg-green-100 dark:bg-green-900/30"
-                                    iconColorClass="text-green-500"
+                                    iconBgClass="bg-secondary"
+                                    iconColorClass="text-white"
                                 />
                             </div>
                         </div>
@@ -91,10 +91,10 @@ const ContactSection: React.FC = () => {
                         <div className="w-full">
                             <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6">{t('contactFollowUs')}</h3>
                             <div className="flex justify-center gap-4 sm:gap-6 flex-wrap">
-                                <SocialContact href="#" icon={LinkedInIcon} label="LinkedIn" hoverBgClass="hover:bg-[#0A66C2]" />
-                                <SocialContact href="#" icon={FacebookIcon} label="Facebook" hoverBgClass="hover:bg-[#1877F2]" />
+                                <SocialContact href="https://www.linkedin.com/in/aide-comptable-567182388/" icon={LinkedInIcon} label="LinkedIn" hoverBgClass="hover:bg-[#0A66C2]" />
+                                <SocialContact href="https://web.facebook.com/people/Aide-Comptable/61581379155050/" icon={FacebookIcon} label="Facebook" hoverBgClass="hover:bg-[#1877F2]" />
                                 <SocialContact href="https://www.instagram.com/aide.comptable212/" icon={InstagramIcon} label="Instagram" hoverBgClass="hover:bg-[#E4405F]" />
-                                <SocialContact href="#" icon={XIcon} label="X" hoverBgClass="hover:bg-[#000000] dark:hover:bg-gray-200 dark:hover:text-black" />
+                                <SocialContact href="https://x.com/aide_comptable" icon={XIcon} label="X" hoverBgClass="hover:bg-[#000000] dark:hover:bg-gray-200 dark:hover:text-black" />
                             </div>
                         </div>
                         

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Page, Language } from '../types';
 import LogoIcon from './icons/LogoIcon';
 import MoonIcon from './icons/MoonIcon';
@@ -25,9 +25,9 @@ const NavLink: React.FC<{
   return (
     <button
       onClick={() => onPageChange(page)}
-      className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+      className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 ${
         isActive
-          ? 'bg-primary-dark/10 text-primary-dark dark:bg-primary-dark/20 dark:text-white'
+          ? 'bg-primary-dark/10 text-primary-dark dark:bg-primary-dark/20 dark:text-white font-semibold'
           : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card'
       }`}
     >
@@ -46,6 +46,10 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
     { code: 'fr', name: 'Français' },
     { code: 'en', name: 'English' },
   ];
+  
+  const toggleLangMenu = useCallback(() => {
+    setIsLangMenuOpen(prev => !prev);
+  }, []);
 
   const handleLanguageChange = (langCode: Language) => {
     setLanguage(langCode);
@@ -72,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
     <button
       onClick={onThemeToggle}
       aria-pressed={isDarkMode}
-      aria-label="Toggle dark mode"
+      aria-label={t('themeToggleLabel')}
       className={`relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-dark-card ${
         isDarkMode ? 'bg-primary' : 'bg-gray-300'
       }`}
@@ -114,11 +118,11 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
                     <NavLink key={item.page} page={item.page} currentPage={currentPage} onPageChange={onPageChange}>{item.label}</NavLink>
                 ))}
             </div>
-            <div className="flex items-center gap-2 md:gap-4">
+            <div className="flex items-center gap-1 md:gap-2">
               <div className="relative">
                 <button
-                  onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                  className="flex items-center p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                  onClick={toggleLangMenu}
+                  className="flex items-center p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 transform hover:scale-110"
                   aria-label="Change language"
                 >
                   <PlanetIcon className="h-5 w-5" />
@@ -139,13 +143,15 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
                 )}
               </div>
               
-              {themeToggleButton}
+              <div className="hidden md:flex items-center pl-2">
+                {themeToggleButton}
+              </div>
 
               {/* Mobile Menu Button */}
               <div className="md:hidden">
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="p-2 -mr-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                  className="p-2 -mr-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 transform hover:scale-110 active:scale-100"
                   aria-controls="mobile-menu"
                   aria-expanded={isMobileMenuOpen}
                 >
@@ -166,7 +172,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
                     <button
                       key={item.page}
                       onClick={() => handleMobileLinkClick(item.page)}
-                      className={`block w-full text-left ltr:text-left rtl:text-right px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+                      className={`block w-full text-left ltr:text-left rtl:text-right px-4 py-3 rounded-md text-base font-medium transition-all duration-200 transform active:bg-gray-300 dark:active:bg-dark-bg active:scale-[0.99] ${
                         currentPage === item.page
                           ? 'bg-primary-dark/10 text-primary-dark dark:bg-primary-dark/20 dark:text-white'
                           : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-card'
@@ -175,6 +181,10 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange, isDarkMode, 
                       {item.label}
                     </button>
                 ))}
+                <div className="px-4 py-3 flex justify-between items-center border-t border-gray-200 dark:border-gray-700 mt-2">
+                    <span className="text-base font-medium text-gray-600 dark:text-gray-300">{t('themeToggleLabel')}</span>
+                    {themeToggleButton}
+                </div>
             </div>
         </div>
       </nav>

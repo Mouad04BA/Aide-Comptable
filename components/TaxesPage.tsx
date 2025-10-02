@@ -384,14 +384,14 @@ const CNSSCalculator = () => {
 };
 
 const TaxLinkCard: React.FC<{ title: string; description: string; href: string; linkText: string; }> = ({ title, description, href, linkText }) => (
-  <div className="bg-white dark:bg-dark-card p-6 rounded-xl shadow-md flex flex-col">
+  <div className="bg-white dark:bg-dark-card p-6 rounded-xl shadow-md flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
     <h3 className="text-xl font-bold mb-2 text-primary-dark">{title}</h3>
     <p className="text-gray-600 dark:text-gray-400 text-sm flex-grow mb-4">{description}</p>
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="mt-auto inline-block text-center px-6 py-2 bg-secondary hover:bg-secondary/90 text-white font-semibold rounded-lg shadow-md transition-all"
+      className="mt-auto inline-block text-center px-6 py-2 bg-secondary hover:bg-secondary/90 text-white font-semibold rounded-lg shadow-md transition-all transform hover:scale-105 active:scale-100"
     >
       {linkText}
     </a>
@@ -411,6 +411,16 @@ const TaxesPage: React.FC = () => {
     { id: 'calendar', label: t('tabCalendar'), icon: CalendarIcon },
   ];
 
+  const definition = useMemo(() => {
+    switch (activeTab) {
+      case 'tva': return t('tvaDef');
+      case 'is': return t('isDef');
+      case 'ir': return t('irDef');
+      case 'cnss': return t('cnssDef');
+      default: return null;
+    }
+  }, [activeTab, t]);
+
   const renderContent = useCallback(() => {
     switch(activeTab) {
       case 'tva': return <TVACalculator />;
@@ -424,14 +434,18 @@ const TaxesPage: React.FC = () => {
 
   return (
     <div className="container mx-auto px-6 py-12">
-      <ScrollAnimationWrapper className="max-w-4xl mx-auto text-center mb-10">
+      <ScrollAnimationWrapper className="max-w-4xl mx-auto text-center mb-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{t('taxesTitle')}</h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300">{t('taxesSubtitle')}</p>
       </ScrollAnimationWrapper>
       
-      <div className="max-w-sm mx-auto mb-10">
-          
-      </div>
+      {definition && (
+        <ScrollAnimationWrapper key={`${activeTab}-def`} className="max-w-3xl mx-auto my-6">
+          <div className="p-4 bg-gray-100 dark:bg-dark-card rounded-lg text-center">
+            <p className="text-sm text-gray-700 dark:text-gray-300">{definition}</p>
+          </div>
+        </ScrollAnimationWrapper>
+      )}
 
       <div className="max-w-4xl mx-auto">
         <div className="mb-8 p-1.5 bg-gray-200 dark:bg-dark-bg rounded-xl flex justify-center gap-2 flex-wrap">

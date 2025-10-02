@@ -124,7 +124,7 @@ In accounting, total assets must always equal total liabilities.
             },
             options: {
                 ar: ['الديون قصيرة الأجل', 'المخزون والعملاء', 'الموارد المالية طويلة الأجل للشركة', 'المبيعات السنوية'],
-                fr: ['Les dettes à court terme', 'Les stocks et les créances', 'Les ressources financières à long terme de l\'entreprise', 'Les ventes annuelles'],
+                fr: ['Les dettes à court terme', 'Les stocks et les créances', "L'entreprise a vendu des marchandises", "L'entreprise a obtenu un prêt bancaire"],
                 en: ['Short-term debts', 'Inventory and receivables', 'The long-term financial resources of the company', 'Annual sales'],
             },
             correctAnswerIndex: 2,
@@ -176,7 +176,7 @@ In accounting, total assets must always equal total liabilities.
             },
             options: {
                 ar: ['أقل من عام', '1 إلى 3 سنوات', 'أكثر من 5 سنوات', 'أقل من شهر'],
-                fr: ['Moins d\'un an', '1 à 3 ans', 'Plus de 5 ans', 'Moins d\'un mois'],
+                fr: ["L'entreprise a acheté des marchandises au comptant", "L'entreprise a payé un fournisseur"],
                 en: ['Less than a year', '1 to 3 years', 'More than 5 years', 'Less than a month'],
             },
             correctAnswerIndex: 0,
@@ -206,6 +206,58 @@ In accounting, total assets must always equal total liabilities.
                 en: ['700,000', '300,000', '200,000', 'Cannot be determined'],
             },
             correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'أي من هذه الأصول هو أصل ثابت معنوي؟',
+                fr: 'Lequel de ces actifs est une immobilisation incorporelle ?',
+                en: 'Which of these assets is an intangible asset?',
+            },
+            options: {
+                ar: ['برنامج حاسوب', 'سيارة توصيل', 'أرض', 'نقد'],
+                fr: ['Logiciel informatique', 'Camion de livraison', 'Terrain', 'Trésorerie'],
+                en: ['Computer software', 'Delivery truck', 'Land', 'Cash'],
+            },
+            correctAnswerIndex: 0,
+        },
+        {
+            question: {
+                ar: 'أي من الإجراءات التالية يقلل من حقوق الملكية؟',
+                fr: 'Laquelle des actions suivantes diminue les capitaux propres ?',
+                en: 'Which of the following actions decreases equity?',
+            },
+            options: {
+                ar: ['تحقيق صافي ربح', 'استثمار إضافي من المالك', 'تحمل صافي خسارة', 'الحصول على قرض بنكي'],
+                fr: ['Réaliser un bénéfice net', 'Un investissement supplémentaire du propriétaire', 'Subir une perte nette', 'Obtenir un prêt bancaire'],
+                en: ['Making a net profit', 'Additional investment by the owner', 'Incurring a net loss', 'Getting a bank loan'],
+            },
+            correctAnswerIndex: 2,
+        },
+        {
+            question: {
+                ar: 'الضرائب المستحقة للدفع هي مثال على:',
+                fr: 'Les impôts à payer sont un exemple de :',
+                en: 'Taxes payable are an example of a:',
+            },
+            options: {
+                ar: ['أصل متداول', 'خصم متداول', 'حقوق ملكية', 'أصل ثابت'],
+                fr: ['Actif circulant', 'Passif circulant', 'Capitaux propres', 'Actif immobilisé'],
+                en: ['Current asset', 'Current liability', 'Equity', 'Fixed asset'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'إذا كان لدى الشركة أصول بقيمة 500,000 درهم وخصوم بقيمة 200,000 درهم ، فما هي حقوق الملكية؟',
+                fr: "Si une entreprise a 500 000 DH d'actifs et 200 000 DH de passifs, quels sont ses capitaux propres ?",
+                en: 'If a company has assets of 500,000 MAD and liabilities of 200,000 MAD, what is its equity?',
+            },
+            options: {
+                ar: ['700,000 درهم', '200,000 درهم', '500,000 درهم', '300,000 درهم'],
+                fr: ['700 000 DH', '200 000 DH', '500 000 DH', '300 000 DH'],
+                en: ['700,000 MAD', '200,000 MAD', '500,000 MAD', '300,000 MAD'],
+            },
+            correctAnswerIndex: 3,
         },
     ],
     td: {
@@ -466,6 +518,58 @@ If revenues are greater than expenses, the company makes a profit. If expenses a
             },
             correctAnswerIndex: 1,
         },
+        {
+            question: {
+                ar: 'الفرق بين الإيرادات المالية والمصاريف المالية يسمى:',
+                fr: 'La différence entre les produits financiers et les charges financières est le :',
+                en: 'The difference between financial revenues and financial expenses is the:',
+            },
+            options: {
+                ar: ['النتيجة الجارية', 'النتيجة المالية', 'نتيجة التشغيل', 'النتيجة الصافية'],
+                fr: ['Résultat courant', 'Résultat financier', "Résultat d'exploitation", 'Résultat net'],
+                en: ['Current income', 'Financial income', 'Operating income', 'Net income'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'أي من التالي مثال على "إيراد غير جاري"؟',
+                fr: 'Lequel des éléments suivants est un exemple de "Produit non courant" ?',
+                en: 'Which of the following is an example of a "Non-current revenue"?',
+            },
+            options: {
+                ar: ['مبيعات البضائع', 'فوائد مكتسبة', 'إعانة توازن مستلمة', 'إيجار مستلم'],
+                fr: ['Ventes de marchandises', 'Intérêts perçus', "Subvention d'équilibre reçue", 'Loyer perçu'],
+                en: ['Sales of goods', 'Interest earned', 'Balancing grant received', 'Rent received'],
+            },
+            correctAnswerIndex: 2,
+        },
+        {
+            question: {
+                ar: 'أجور الموظفين تظهر في حساب النتائج تحت بند:',
+                fr: 'Les salaires des employés apparaissent dans le CPC sous :',
+                en: 'Employee salaries appear on the income statement under:',
+            },
+            options: {
+                ar: ['مصاريف مالية', 'مصاريف غير جارية', 'مصاريف تشغيل', 'إيرادات تشغيل'],
+                fr: ['Charges financières', 'Charges non courantes', "Charges d'exploitation", "Produits d'exploitation"],
+                en: ['Financial expenses', 'Non-current expenses', 'Operating expenses', 'Operating revenues'],
+            },
+            correctAnswerIndex: 2,
+        },
+        {
+            question: {
+                ar: 'إذا كانت المبيعات 200,000، وتكلفة البضاعة المباعة 120,000، والإيجار 20,000، فما هو صافي الربح قبل المصاريف الأخرى؟',
+                fr: 'Si les ventes sont de 200 000, le coût des marchandises vendues de 120 000, et le loyer de 20 000, quel est le bénéfice avant autres charges ?',
+                en: 'If sales are 200,000, cost of goods sold is 120,000, and rent is 20,000, what is the profit before other expenses?',
+            },
+            options: {
+                ar: ['200,000', '80,000', '60,000', '340,000'],
+                fr: ['200 000', '80 000', '60 000', '340 000'],
+                en: ['200,000', '80,000', '60,000', '340,000'],
+            },
+            correctAnswerIndex: 2,
+        },
     ],
     td: {
         problem: {
@@ -632,7 +736,7 @@ The equation remains balanced.
         options: {
           ar: ['الأصول + الخصوم', 'مطالبة المالكين بصافي الأصول', 'إجمالي الإيرادات', 'صافي الربح'],
           fr: ['Actif + Passif', 'La créance des propriétaires sur les actifs nets', 'Le total des produits', 'Le résultat net'],
-          en: ['Assets + Liabilities', 'The owners\' claim on net assets', 'Total revenues', 'Net income'],
+          en: ['Assets + Liabilities', "The owners' claim on net assets", 'Total revenues', 'Net income'],
         },
         correctAnswerIndex: 1,
       },
@@ -739,6 +843,58 @@ The equation remains balanced.
           en: ['400,000', '150,000', '250,000', '100,000'],
         },
         correctAnswerIndex: 3,
+      },
+      {
+        question: {
+            ar: 'استلام نقد من عميل لسداد دين سابق يؤثر على المعادلة كالتالي:',
+            fr: "La réception d'espèces d'un client pour une créance existante affecte l'équation comme suit :",
+            en: 'Receiving cash from a customer for a previous credit sale affects the equation as follows:',
+        },
+        options: {
+            ar: ['زيادة أصل ونقصان أصل آخر', 'زيادة أصل وزيادة حقوق ملكية', 'زيادة أصل وزيادة خصم', 'لا تغيير في إجمالي الأصول'],
+            fr: ["Un actif augmente et un autre actif diminue", "Un actif augmente et les capitaux propres augmentent", 'Un actif augmente et un passif augmente', "Aucun changement dans le total de l'actif"],
+            en: ['An asset increases and another asset decreases', 'An asset increases and equity increases', 'An asset increases and a liability increases', 'No change in total assets'],
+        },
+        correctAnswerIndex: 0,
+      },
+      {
+        question: {
+            ar: 'دفع رواتب الموظفين نقدًا:',
+            fr: 'Le paiement des salaires en espèces :',
+            en: 'Paying employee salaries in cash:',
+        },
+        options: {
+            ar: ['يقلل الأصول ويقلل حقوق الملكية', 'يقلل الأصول ويقلل الخصوم', 'يزيد المصاريف ويزيد الخصوم', 'ليس له أي تأثير'],
+            fr: ["Diminue l'actif et diminue les capitaux propres", "Diminue l'actif et diminue le passif", "Augmente les charges et augmente le passif", "N'a aucun effet"],
+            en: ['Decreases assets and decreases equity', 'Decreases assets and decreases liabilities', 'Increases expenses and increases liabilities', 'Has no effect'],
+        },
+        correctAnswerIndex: 0,
+      },
+      {
+        question: {
+            ar: 'إذا زادت الخصوم بمقدار 50,000 درهم، فماذا يمكن أن يكون قد حدث؟',
+            fr: 'Si le passif augmente de 50 000 DH, que pourrait-il s\'être passé ?',
+            en: 'If liabilities increase by 50,000 MAD, what could have happened?',
+        },
+        options: {
+            ar: ['الشركة باعت بضاعة', 'الشركة اشترت بضاعة نقدًا', 'الشركة حصلت على قرض بنكي', 'الشركة دفعت للمورد'],
+            fr: ['Moins d\'un an', '1 à 3 ans', 'Plus de 5 ans', 'Moins d\'un mois'],
+            en: ['The company sold goods', 'The company bought goods for cash', 'The company got a bank loan', 'The company paid a supplier'],
+        },
+        correctAnswerIndex: 2,
+      },
+      {
+        question: {
+            ar: 'إذا كانت الأصول 800,000 وحقوق الملكية 300,000، فما هي الخصوم؟',
+            fr: "Si l'actif est de 800 000 et les capitaux propres de 300 000, quel est le montant du passif ?",
+            en: 'If assets are 800,000 and equity is 300,000, what are the liabilities?',
+        },
+        options: {
+            ar: ['1,100,000', '300,000', '500,000', '800,000'],
+            fr: ['1 100 000', '300 000', '500 000', '800 000'],
+            en: ['1,100,000', '300,000', '500,000', '800,000'],
+        },
+        correctAnswerIndex: 2,
       },
     ],
      td: {
@@ -880,7 +1036,7 @@ At the end of each accounting period, a depreciation entry is recorded:
           options: {
             ar: ['زيادة في قيمة الأصل', 'الاعتراف بانخفاض قيمة الأصل', 'تكلفة بيع الأصل', 'إيراد من الأصل'],
             fr: ["Une augmentation de la valeur de l'actif", "La constatation de la perte de valeur de l'actif", "Le coût de vente de l'actif", "Un revenu généré par l'actif"],
-            en: ['An increase in asset value', 'The recognition of an asset\'s loss in value', 'The cost of selling an asset', 'Revenue from an asset'],
+            en: ['An increase in asset value', "The recognition of an asset's loss in value", 'The cost of selling an asset', 'Revenue from an asset'],
           },
           correctAnswerIndex: 1,
         },
@@ -940,7 +1096,7 @@ At the end of each accounting period, a depreciation entry is recorded:
             question: {
               ar: 'مع مرور الوقت، فإن القيمة الصافية المحاسبية للأصل:',
               fr: 'Au fil du temps, la VNC d\'un actif :',
-              en: 'Over time, an asset\'s VNC:',
+              en: "Over time, an asset's VNC:",
             },
             options: {
               ar: ['تزيد', 'تنقص', 'تبقى ثابتة', 'تصبح صفراً فوراً'],
@@ -996,7 +1152,7 @@ At the end of each accounting period, a depreciation entry is recorded:
             },
             options: {
               ar: ['لزيادة قيمتها', 'لتوزيع تكلفتها على مدى عمرها الإنتاجي', 'لبيعها بسرعة أكبر', 'لأن القانون يفرض ذلك فقط'],
-              fr: ['Pour augmenter leur valeur', 'Pour répartir leur coût sur leur durée de vie utile', 'Pour les vendre plus rapidement', 'Uniquement parce que la loi l\'exige'],
+              fr: ['Pour augmenter leur valeur', 'Pour répartir leur coût sur leur durée de vie utile', 'Pour les vendre plus rapidement', "Uniquement parce que la loi l'exige"],
               en: ['To increase their value', 'To allocate their cost over their useful life', 'To sell them more quickly', 'Only because the law requires it'],
             },
             correctAnswerIndex: 1,
@@ -1009,11 +1165,63 @@ At the end of each accounting period, a depreciation entry is recorded:
             },
             options: {
                 ar: ['تساوي قيمته الأصلية', 'صفر', 'نصف قيمته الأصلية', 'لا يمكن معرفتها'],
-                fr: ['Égale à sa valeur d\'origine', 'Zéro', 'La moitié de sa valeur d\'origine', 'Inconnue'],
+                fr: ["Égale à sa valeur d'origine", 'Zéro', 'La moitié de sa valeur d\'origine', 'Inconnue'],
                 en: ['Equal to its original cost', 'Zero', 'Half its original cost', 'Unknown'],
             },
             correctAnswerIndex: 1,
-        }
+        },
+        {
+            question: {
+                ar: 'أي أصل من الأصول التالية لا يتم اهتلاكه عادة؟',
+                fr: 'Lequel des actifs suivants n\'est généralement pas amorti ?',
+                en: 'Which of the following assets is generally not depreciated?',
+            },
+            options: {
+                ar: ['سيارة', 'أرض', 'حاسوب', 'مبنى'],
+                fr: ['Voiture', 'Terrain', 'Ordinateur', 'Bâtiment'],
+                en: ['Car', 'Land', 'Computer', 'Building'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'ماذا يمثل "الاهتلاك المتراكم"؟',
+                fr: "Que représente l' 'amortissement cumulé' ?",
+                en: 'What does "accumulated depreciation" represent?',
+            },
+            options: {
+                ar: ['اهتلاك سنة واحدة', 'مجموع الاهتلاك المسجل على الأصل حتى الآن', 'القيمة السوقية للأصل', 'تكلفة إصلاح الأصل'],
+                fr: ["L'amortissement d'une seule année", "Le total de l'amortissement enregistré sur l'actif à ce jour", "La valeur marchande de l'actif", "Le coût de réparation de l'actif"],
+                en: ["A single year's depreciation", 'The total depreciation recorded on the asset to date', "The asset's market value", "The asset's repair cost"],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'إذا تم شراء أصل في 1 يوليو، فما هو مقدار الاهتلاك المسجل في السنة الأولى؟',
+                fr: 'Si un actif est acheté le 1er juillet, combien d\'amortissement est enregistré pour la première année ?',
+                en: 'If an asset is purchased on July 1st, how much depreciation is recorded for the first year?',
+            },
+            options: {
+                ar: ['قسط سنوي كامل', 'نصف قسط سنوي', 'ربع قسط سنوي', 'لا يوجد اهتلاك'],
+                fr: ['Une annuité complète', 'Une demi-annuité', "Un quart d'annuité", "Aucun amortissement"],
+                en: ['A full year annuity', 'Half of a year annuity', 'A quarter of a year annuity', 'No depreciation'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'مصروف الاهتلاك السنوي يؤثر على:',
+                fr: "La charge d'amortissement annuelle affecte :",
+                en: 'The annual depreciation expense affects:',
+            },
+            options: {
+                ar: ['حساب النتائج فقط', 'الميزانية فقط', 'حساب النتائج والميزانية', 'لا يؤثر على أي منهما'],
+                fr: ['Uniquement le CPC', 'Uniquement le Bilan', 'Le CPC et le Bilan', "N'affecte aucun des deux"],
+                en: ['Only the Income Statement', 'Only the Balance Sheet', 'Both the Income Statement and the Balance Sheet', 'Neither'],
+            },
+            correctAnswerIndex: 2,
+        },
     ],
     td: {
       problem: {
@@ -1232,7 +1440,7 @@ At the end of each period (month or quarter), the company calculates the VAT pay
           },
           options: {
             ar: ['مصروف', 'إيراد', 'دين على الدولة (أصل)', 'دين على المورد'],
-            fr: ['Une charge', 'Un produit', 'Une créance sur l\'État (actif)', 'Une dette envers le fournisseur'],
+            fr: ['Une charge', 'Un produit', "Une créance sur l'État (actif)", 'Une dette envers le fournisseur'],
             en: ['Expense', 'Revenue', 'Receivable from the state (asset)', 'Liability to the supplier'],
           },
           correctAnswerIndex: 2,
@@ -1314,6 +1522,58 @@ At the end of each period (month or quarter), the company calculates the VAT pay
                 en: ['Selling computers', 'Lawyer services', 'Export of goods', 'Selling cars'],
             },
             correctAnswerIndex: 2,
+        },
+        {
+            question: {
+                ar: 'أي حساب يتم استخدامه لتسجيل ضريبة القيمة المضافة على المشتريات؟',
+                fr: "Quel compte est utilisé pour la TVA sur les achats ?",
+                en: 'Which account is used for VAT on purchases?',
+            },
+            options: {
+                ar: ['Etat, TVA facturée (4455)', 'Etat, TVA récupérable (3455)', 'Ventes de marchandises (711)', 'Achats de marchandises (611)'],
+                fr: ['Etat, TVA facturée (4455)', 'Etat, TVA récupérable (3455)', 'Ventes de marchandises (711)', 'Achats de marchandises (611)'],
+                en: ['Collected VAT (4455)', 'Deductible VAT (3455)', 'Sales of goods (711)', 'Purchases of goods (611)'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'ما هو معدل ضريبة القيمة المضافة المطبق على عمليات التصدير؟',
+                fr: "Quel est le taux de TVA appliqué aux opérations d'exportation ?",
+                en: 'What is the VAT rate applied to export transactions?',
+            },
+            options: {
+                ar: ['20%', '10%', '7%', '0% (مع الحق في الخصم)'],
+                fr: ['20%', '10%', '7%', '0% (avec droit à déduction)'],
+                en: ['20%', '10%', '7%', '0% (with right to deduct)'],
+            },
+            correctAnswerIndex: 3,
+        },
+        {
+            question: {
+                ar: 'إذا كانت ضريبة القيمة المضافة القابلة للاسترداد أكبر من ضريبة القيمة المضافة المحصلة، فإن النتيجة هي:',
+                fr: 'Si la TVA récupérable est supérieure à la TVA facturée, le résultat est un :',
+                en: 'If deductible VAT is greater than collected VAT, the result is a:',
+            },
+            options: {
+                ar: ['ضريبة مستحقة للدفع', 'رصيد ضريبي', 'ربح', 'خسارة'],
+                fr: ['TVA à décaisser', 'Crédit de TVA', 'Bénéfice', 'Perte'],
+                en: ['VAT payable', 'VAT credit', 'Profit', 'Loss'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'ما هو الأساس الذي يتم عليه حساب ضريبة القيمة المضافة؟',
+                fr: 'Quelle est la base de calcul de la TVA ?',
+                en: 'What is the calculation base for VAT?',
+            },
+            options: {
+                ar: ['السعر شامل الضريبة', 'السعر بدون ضريبة', 'هامش الربح', 'تكلفة الشراء'],
+                fr: ['Le prix TTC', 'Le prix HT', 'La marge bénéficiaire', "Le coût d'achat"],
+                en: ['The price including tax', 'The price before tax', 'The profit margin', 'The purchase cost'],
+            },
+            correctAnswerIndex: 1,
         },
     ],
     td: {
@@ -1618,7 +1878,59 @@ The same mechanism applies to raw materials (accounts 312 and 6124) and finished
                 en: ['Revenue', 'Expense (consumption)', 'Profit', 'Asset'],
             },
             correctAnswerIndex: 1,
-        }
+        },
+        {
+            question: {
+                ar: 'ما هو تأثير زيادة مخزون المنتجات النهائية على نتيجة السنة؟',
+                fr: "Quel est l'impact d'une augmentation du stock de produits finis sur le résultat de l'exercice ?",
+                en: "What is the impact of an increase in finished goods inventory on the year's profit?",
+            },
+            options: {
+                ar: ['تزيد من النتيجة', 'تقلل من النتيجة', 'ليس لها تأثير', 'تزيد من المصاريف'],
+                fr: ['Elle augmente le résultat', 'Elle diminue le résultat', "Elle n'a aucun impact", 'Elle augmente les charges'],
+                en: ['It increases the profit', 'It decreases the profit', 'It has no impact', 'It increases expenses'],
+            },
+            correctAnswerIndex: 0,
+        },
+        {
+            question: {
+                ar: 'الرصيد المدين لحساب "تغير مخزون المواد الأولية" يعني أن:',
+                fr: 'Un solde débiteur du compte "Variation de stocks de matières premières" signifie que :',
+                en: 'A debit balance in the "Variation de stocks de matières premières" account means that:',
+            },
+            options: {
+                ar: ['الشركة اشترت أكثر مما استهلكت', 'الشركة استهلكت أكثر مما اشترت', 'المخزون النهائي أكبر من المخزون الأولي', 'الشركة لم تشتر أي مواد'],
+                fr: ["L'entreprise a acheté plus qu'elle n'a consommé", "L'entreprise a consommé plus qu'elle n'a acheté", 'Le stock final est supérieur au stock initial', "L'entreprise n'a acheté aucune matière"],
+                en: ['The company bought more than it consumed', 'The company consumed more than it bought', 'Ending inventory is greater than beginning inventory', 'The company bought no materials'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'أي نظام جرد يتطلب هذه القيود في نهاية السنة؟',
+                fr: "Quel système d'inventaire nécessite ces écritures en fin d'année ?",
+                en: 'Which inventory system requires these year-end entries?',
+            },
+            options: {
+                ar: ['الجرد الدائم', 'الجرد المتقطع', 'كلا النظامين', 'لا يتطلب أي نظام هذه القيود'],
+                fr: ['Inventaire permanent', 'Inventaire intermittent', 'Les deux systèmes', 'Aucun système ne requiert ces écritures'],
+                en: ['Perpetual inventory', 'Intermittent inventory', 'Both systems', 'Neither system requires these entries'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'إذا كان المخزون الأولي 100، المشتريات 500، والمخزون النهائي 80، فما هي تكلفة البضاعة المباعة؟',
+                fr: 'Si SI=100, Achats=500, et SF=80, quel est le Coût des Marchandises Vendues ?',
+                en: 'If BI=100, Purchases=500, and EI=80, what is the Cost of Goods Sold?',
+            },
+            options: {
+                ar: ['520', '480', '500', '680'],
+                fr: ['520', '480', '500', '680'],
+                en: ['520', '480', '500', '680'],
+            },
+            correctAnswerIndex: 0,
+        },
     ],
     td: {
       problem: {
@@ -1916,6 +2228,58 @@ The supplier can "sell" the bill of exchange to their bank before its maturity d
                 en: ['Their customer', 'The state', 'Their bank', 'Another supplier'],
             },
             correctAnswerIndex: 2,
+        },
+        {
+            question: {
+                ar: 'في الكمبيالة، من هو "المسحوب عليه" (le tiré)؟',
+                fr: 'Dans une lettre de change, qui est le "tiré" ?',
+                en: 'In a letter of change, who is the "drawee" (le tiré)?',
+            },
+            options: {
+                ar: ['البنك', 'المورد', 'العميل', 'المستفيد'],
+                fr: ['La banque', 'Le fournisseur', 'Le client', 'Le bénéficiaire'],
+                en: ['The bank', 'The supplier', 'The customer', 'The beneficiary'],
+            },
+            correctAnswerIndex: 2,
+        },
+        {
+            question: {
+                ar: 'عند خصم ورقة تجارية، يتم تسجيل الفوائد التي يقتطعها البنك كمصروف:',
+                fr: "Lors de l'escompte d'un effet, les intérêts prélevés par la banque sont enregistrés en tant que charge :",
+                en: 'When discounting a bill, the interest charged by the bank is recorded as a(n):',
+            },
+            options: {
+                ar: ['تشغيلي', 'مالي', 'غير جاري', 'ضريبي'],
+                fr: ["D'exploitation", 'Financière', 'Non courante', 'Fiscale'],
+                en: ['Operating', 'Financial', 'Non-current', 'Tax'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'ماذا يحدث محاسبياً إذا لم يدفع العميل الورقة في تاريخ الاستحقاق؟',
+                fr: "Que se passe-t-il comptablement si un client ne paie pas un effet à l'échéance ?",
+                en: "What happens from an accounting perspective if a customer dishonors a bill at maturity?",
+            },
+            options: {
+                ar: ['يتم إلغاء البيع', 'يتم تحويل الورقة مرة أخرى إلى دين عميل عادي', 'يتم حذف الدين', 'لا يتم فعل أي شيء'],
+                fr: ['La vente est annulée', "L'effet est retransformé en créance client ordinaire", 'La créance est supprimée', 'Rien n\'est fait'],
+                en: ['The sale is cancelled', 'The note receivable is converted back into a regular accounts receivable', 'The receivable is deleted', 'Nothing is done'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'ما هو الغرض من "قبول" الكمبيالة؟',
+                fr: "Quel est le but de l' 'acceptation' d'une lettre de change ?",
+                en: "What is the purpose of 'accepting' a letter of change?",
+            },
+            options: {
+                ar: ['تأكيد استلام البضاعة', 'جعل التزام العميل بالدفع التزاماً قانونياً', 'الحصول على خصم', 'إلغاء الطلب'],
+                fr: ['Confirmer la réception des marchandises', "Rendre l'engagement de payer du client juridiquement contraignant", 'Obtenir une réduction', 'Annuler la commande'],
+                en: ['To confirm receipt of goods', "To make the customer's obligation to pay legally binding", 'To get a discount', 'To cancel the order'],
+            },
+            correctAnswerIndex: 1,
         },
     ],
     td: {
@@ -2254,6 +2618,58 @@ Payroll accounting involves recording all costs related to employee remuneration
             },
             correctAnswerIndex: 3,
         },
+        {
+            question: {
+                ar: 'ما الفرق بين حساب 6171 و 6174؟',
+                fr: 'Quelle est la différence entre le compte 6171 et 6174 ?',
+                en: 'What is the difference between account 6171 and 6174?',
+            },
+            options: {
+                ar: ['6171 للرواتب، 6174 للمساهمات', '6171 للمديرين، 6174 للموظفين', 'كلاهما للرواتب', '6171 للموظفين، 6174 للمديرين'],
+                fr: ['6171 pour les salaires bruts, 6174 pour les charges patronales', '6171 pour les directeurs, 6174 pour les employés', 'Les deux sont pour les salaires', '6171 pour les employés, 6174 pour les directeurs'],
+                en: ['6171 is for gross salaries, 6174 is for employer contributions', '6171 is for managers, 6174 is for employees', 'Both are for salaries', '6171 is for employees, 6174 is for managers'],
+            },
+            correctAnswerIndex: 0,
+        },
+        {
+            question: {
+                ar: 'ما هي صيغة الراتب الصافي للدفع؟',
+                fr: 'Quelle est la formule du Salaire Net à payer ?',
+                en: 'What is the formula for Net Salary Payable?',
+            },
+            options: {
+                ar: ['الراتب الإجمالي + مساهمات الموظف', 'الراتب الإجمالي - مساهمات صاحب العمل', 'الراتب الإجمالي - مساهمات الموظف - الضريبة على الدخل', 'الراتب الإجمالي + الضريبة على الدخل'],
+                fr: ['Salaire Brut + Cotisations salariales', 'Salaire Brut - Cotisations patronales', 'Salaire Brut - Cotisations salariales - IR', 'Salaire Brut + IR'],
+                en: ['Gross Salary + Employee Contributions', 'Gross Salary - Employer Contributions', 'Gross Salary - Employee Contributions - IR', 'Gross Salary + IR'],
+            },
+            correctAnswerIndex: 2,
+        },
+        {
+            question: {
+                ar: 'أين يظهر حساب "4432 - أجور الموظفين المستحقة" قبل دفعها؟',
+                fr: "Où le compte '4432 - Personnel, Rémunérations dues' apparaît-il avant d'être payé ?",
+                en: "Where does the '4432 - Personnel, Rémunérations dues' account appear before it is paid?",
+            },
+            options: {
+                ar: ['في الأصول المتداولة', 'في الخصوم المتداولة', 'في حقوق الملكية', 'في المصاريف'],
+                fr: ["Dans l'actif circulant", "Dans le passif circulant", 'Dans les capitaux propres', 'Dans les charges'],
+                en: ['In current assets', 'In current liabilities', 'In equity', 'In expenses'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'متى يتم تسجيل قيد مساهمات صاحب العمل؟',
+                fr: "Quand l'écriture pour les cotisations patronales est-elle enregistrée ?",
+                en: 'When is the entry for employer contributions recorded?',
+            },
+            options: {
+                ar: ['عند دفع الرواتب', 'في نهاية السنة', 'في نفس وقت تسجيل الراتب الإجمالي', 'لا يتم تسجيلها'],
+                fr: ['Lors du paiement des salaires', "À la fin de l'année", 'En même temps que la constatation du salaire brut', "Elle n'est pas enregistrée"],
+                en: ['When salaries are paid', 'At the end of the year', 'At the same time the gross salary is recorded', 'It is not recorded'],
+            },
+            correctAnswerIndex: 2,
+        },
     ],
     td: {
       problem: {
@@ -2564,6 +2980,59 @@ Journal entries are made **only** for the adjustments made to the book balance.
             },
             correctAnswerIndex: 2,
         },
+        {
+            question: {
+                ar: 'إيداع تم في 31 ديسمبر وظهر في كشف حساب يناير هو:',
+                fr: 'Un dépôt fait le 31 décembre et apparaissant sur le relevé de janvier est un :',
+                en: 'A deposit made on Dec 31st that appears on the January bank statement is a:',
+            },
+            options: {
+                ar: ['إيداع في الطريق', 'خطأ محاسبي', 'شيك معلق', 'إيراد مقدم'],
+                fr: ['Dépôt en transit', 'Erreur comptable', 'Chèque en circulation', 'Produit constaté d\'avance'],
+                en: ['Deposit in transit', 'Accounting error', 'Outstanding check', 'Unearned revenue'],
+            },
+            correctAnswerIndex: 0,
+        },
+        {
+            question: {
+                ar: 'إذا أخطأ البنك وخصم مبلغاً من حسابك، فإنه يعامل في التسوية على أنه:',
+                fr: 'Si la banque débite votre compte par erreur, cela est traité dans le rapprochement comme :',
+                en: 'If the bank mistakenly debits your account, it is treated in the reconciliation as a(n):',
+            },
+            options: {
+                ar: ['إضافة إلى رصيد البنك', 'خصم من رصيد البنك', 'إضافة إلى رصيد الدفاتر', 'خصم من رصيد الدفاتر'],
+                fr: ['Addition au solde bancaire', 'Soustraction du solde bancaire', 'Addition au solde comptable', 'Soustraction du solde comptable'],
+                en: ['Addition to the bank balance', 'Subtraction from the bank balance', 'Addition to the book balance', 'Subtraction from the book balance'],
+            },
+            correctAnswerIndex: 0,
+        },
+        {
+            // FIX: Added missing 'en' property to the question object to match the 'Record<Language, string>' type.
+            question: {
+                ar: 'ما هو الهدف النهائي للتسوية البنكية؟',
+                fr: 'Quel est le but final du rapprochement bancaire ?',
+                en: 'What is the final goal of the bank reconciliation?',
+            },
+            options: {
+                ar: ['إيجاد أخطاء البنك', 'التأكد من أن الرصيدين المعدلين متساويان', 'تأجيل دفع الضرائب', 'زيادة الرصيد النقدي'],
+                fr: ['Trouver les erreurs de la banque', "S'assurer que les deux soldes ajustés sont égaux", 'Reporter le paiement des impôts', 'Augmenter le solde de trésorerie'],
+                en: ["To find the bank's errors", 'To ensure the two adjusted balances are equal', 'To postpone tax payments', 'To increase the cash balance'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'ما هو القيد المحاسبي الذي يتم تسجيله لشيك معلق؟',
+                fr: "Quelle écriture de journal est passée pour un chèque en circulation ?",
+                en: 'What journal entry is made for an outstanding check?',
+            },
+            options: {
+                ar: ['مدين البنك، دائن المصروف', 'مدين المصروف، دائن البنك', 'لا يتم تسجيل أي قيد', 'مدين البنك، دائن الحسابات الدائنة'],
+                fr: ['Débit Banque, Crédit Charge', 'Débit Charge, Crédit Banque', 'Aucune écriture n\'est passée', 'Débit Banque, Crédit Comptes fournisseurs'],
+                en: ['Debit Bank, Credit Expense', 'Debit Expense, Credit Bank', 'No entry is made', 'Debit Bank, Credit Accounts Payable'],
+            },
+            correctAnswerIndex: 2,
+        },
     ],
     td: {
       problem: {
@@ -2664,5 +3133,322 @@ An entry is needed only for the bank fees.
 - Credit: 5141 - Banque: 200`,
       }
     }
-  }
+  },
+  {
+    id: 'provisions',
+    title: {
+      ar: 'الدرس 10: المؤونات',
+      fr: 'Leçon 10 : Les Provisions',
+      en: 'Lesson 10: Provisions',
+    },
+    description: {
+      ar: 'تعلم كيفية توقع وتسجيل الخسائر أو الأعباء المستقبلية المحتملة ولكن غير المؤكدة.',
+      fr: 'Apprendre à anticiper et comptabiliser les pertes ou charges futures probables mais incertaines.',
+      en: 'Learn to anticipate and account for future probable but uncertain losses or expenses.',
+    },
+    content: {
+      ar: `
+المؤونة هي التزام محتمل في تاريخ الإقفال. بناءً على **مبدأ الحيطة والحذر**، يجب على الشركة تسجيل مصروف لخسارة أو عبء محتمل حتى لو لم يكن المبلغ أو التاريخ مؤكدًا تمامًا.
+
+**أنواع المؤونات:**
+- **مؤونات للمخاطر والأعباء:** تغطي المخاطر مثل الدعاوى القضائية، والغرامات، والضمانات الممنوحة للعملاء. يتم تسجيلها كخصوم (الفئة 15 أو 45).
+- **مؤونات لانخفاض القيمة:** تغطي انخفاض قيمة الأصول (الديون المشكوك في تحصيلها، انخفاض قيمة المخزون أو الأوراق المالية). يتم تسجيلها في حسابات خاصة (29، 39، 59) تقلل من قيمة الأصل في الميزانية.
+
+**القيود المحاسبية:**
+1.  **تكوين المؤونة (Dotation):**
+    عندما يصبح الخطر محتملاً، يتم تسجيل مصروف.
+    - مدين: **619x/639x/659x - Dotations...** (حساب مصروف)
+    - دائن: **15xx/45xx** (لمؤونات المخاطر والأعباء) أو **x9xx** (لمؤونات انخفاض القيمة).
+
+2.  **استعمال المؤونة (Utilisation):**
+    عندما يحدث العبء الفعلي (مثلاً، دفع تعويض في دعوى قضائية)، لا يتم تسجيل مصروف جديد، بل يتم تسوية الدين الفعلي.
+
+3.  **إلغاء المؤونة (Reprise):**
+    إذا لم يعد الخطر قائمًا (مثلاً، الفوز في الدعوى القضائية) أو إذا كانت المؤونة أكبر من اللازم، يتم إلغاؤها. هذا الإلغاء يمثل إيرادًا.
+    - مدين: **15xx/45xx** أو **x9xx** (لإلغاء المؤونة)
+    - دائن: **719x/739x/759x - Reprises sur provisions...** (حساب إيراد).
+      `,
+      fr: `
+Une provision est un passif probable à la date de clôture. En vertu du **principe de prudence**, l'entreprise doit constater une charge pour une perte ou une dépense future probable, même si son montant ou sa date ne sont pas encore certains.
+
+**Types de Provisions :**
+- **Provisions pour Risques et Charges (PRC) :** Couvrent des risques comme des litiges, des amendes, ou des garanties données aux clients. Elles sont enregistrées au passif (Classe 15 ou 45).
+- **Provisions pour Dépréciation :** Couvrent la perte de valeur d'un actif (créances douteuses, dépréciation de stocks ou de titres). Elles sont enregistrées dans des comptes spécifiques (29, 39, 59) qui diminuent la valeur de l'actif au bilan.
+
+**Écritures Comptables :**
+1.  **Constitution de la provision (Dotation) :**
+    Lorsque le risque devient probable, une charge est constatée.
+    - Débit : **619x/639x/659x - Dotations...** (Compte de charge)
+    - Crédit : **15xx/45xx** (pour PRC) ou **x9xx** (pour dépréciation).
+
+2.  **Utilisation de la provision :**
+    Lorsque la charge réelle survient (ex: paiement d'une indemnité suite à un procès), on ne passe pas de nouvelle charge, mais on règle la dette réelle.
+
+3.  **Annulation de la provision (Reprise) :**
+    Si le risque disparaît (ex: procès gagné) ou si la provision était excessive, elle est annulée. Cette annulation constitue un produit.
+    - Débit : **15xx/45xx** ou **x9xx** (pour annuler la provision)
+    - Crédit : **719x/739x/759x - Reprises sur provisions...** (Compte de produit).
+      `,
+      en: `
+A provision is a probable liability at the closing date. Under the **prudence principle**, a company must recognize an expense for a future probable loss or expense, even if its amount or date is not yet certain.
+
+**Types of Provisions:**
+- **Provisions for Risks and Charges (PRC):** Cover risks such as lawsuits, fines, or warranties given to customers. They are recorded as liabilities (Class 15 or 45).
+- **Provisions for Impairment:** Cover the loss of value of an asset (doubtful accounts, depreciation of inventory or securities). They are recorded in specific accounts (29, 39, 59) that decrease the asset's value on the balance sheet.
+
+**Journal Entries:**
+1.  **Creation of the provision (Dotation):**
+    When the risk becomes probable, an expense is recognized.
+    - Debit: **619x/639x/659x - Dotations...** (Expense account)
+    - Credit: **15xx/45xx** (for PRC) or **x9xx** (for impairment).
+
+2.  **Use of the provision:**
+    When the actual charge occurs (e.g., payment of damages in a lawsuit), no new expense is recorded; instead, the actual liability is settled.
+
+3.  **Reversal of the provision (Reprise):**
+    If the risk disappears (e.g., the lawsuit is won) or if the provision was excessive, it is reversed. This reversal constitutes revenue.
+    - Debit: **15xx/45xx** or **x9xx** (to cancel the provision)
+    - Credit: **719x/739x/759x - Reprises sur provisions...** (Revenue account).
+      `,
+    },
+    quiz: [
+        {
+          question: {
+            ar: 'ما هو المبدأ المحاسبي الذي يبرر تكوين المؤونات؟',
+            fr: 'Quel principe comptable justifie la constitution des provisions ?',
+            en: 'Which accounting principle justifies the creation of provisions?',
+          },
+          options: {
+            ar: ['مبدأ التكلفة التاريخية', 'مبدأ الحيطة والحذر', 'مبدأ استمرارية النشاط', 'مبدأ تخصص الفترات'],
+            fr: ['Coût historique', 'Prudence', "Continuité d'exploitation", 'Spécialisation des exercices'],
+            en: ['Historical cost', 'Prudence', 'Going concern', 'Matching principle'],
+          },
+          correctAnswerIndex: 1,
+        },
+        {
+          question: {
+            ar: 'مؤونة لمواجهة دعوى قضائية هي:',
+            fr: "Une provision pour un litige en cours est une :",
+            en: 'A provision for an ongoing lawsuit is a:',
+          },
+          options: {
+            ar: ['مؤونة لانخفاض القيمة', 'مؤونة للمخاطر والأعباء', 'مؤونة منظمة', 'اهتلاك'],
+            fr: ['Provision pour dépréciation', 'Provision pour risques et charges', 'Provision réglementée', 'Amortissement'],
+            en: ['Provision for impairment', 'Provision for risks and charges', 'Regulated provision', 'Depreciation'],
+          },
+          correctAnswerIndex: 1,
+        },
+        {
+          question: {
+            ar: 'عند تكوين مؤونة لمخاطر تشغيلية، ما هو القيد الصحيح؟',
+            fr: "Lors de la constitution d'une provision pour risques d'exploitation, quelle est l'écriture correcte ?",
+            en: 'When creating a provision for operating risks, what is the correct entry?',
+          },
+          options: {
+            ar: ['مدين 151، دائن 6195', 'مدين 7195، دائن 151', 'مدين 6195، دائن 151', 'مدين 151، دائن 7195'],
+            fr: ['Débit 151, Crédit 6195', 'Débit 7195, Crédit 151', 'Débit 6195, Crédit 151', 'Débit 151, Crédit 7195'],
+            en: ['Debit 151, Credit 6195', 'Debit 7195, Credit 151', 'Debit 6195, Credit 151', 'Debit 151, Credit 7195'],
+          },
+          correctAnswerIndex: 2,
+        },
+        {
+          question: {
+            ar: 'إلغاء مؤونة لم تعد ضرورية (Reprise) يؤدي إلى تسجيل:',
+            fr: "L'annulation d'une provision devenue sans objet (Reprise) entraîne la comptabilisation d'un :",
+            en: 'The reversal of a provision that is no longer needed (Reprise) results in recording a(n):',
+          },
+          options: {
+            ar: ['مصروف', 'إيراد', 'خسارة', 'أصل'],
+            fr: ['Charge', 'Produit', 'Perte', 'Actif'],
+            en: ['Expense', 'Revenue', 'Loss', 'Asset'],
+          },
+          correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'عندما يصبح من المحتمل أن لا يدفع عميل دينه، تقوم الشركة بإنشاء:',
+                fr: "Lorsqu'un client devient douteux, l'entreprise constitue une :",
+                en: 'When a customer becomes unlikely to pay, the company creates a:',
+            },
+            options: {
+                ar: ['مؤونة للمخاطر والأعباء', 'مؤونة لانخفاض قيمة الديون', 'اهتلاك', 'دين للمورد'],
+                fr: ['Provision pour risques et charges', 'Provision pour dépréciation des créances', 'Amortissement', 'Dette fournisseur'],
+                en: ['Provision for risks and charges', 'Provision for impairment of receivables', 'Depreciation', 'Supplier debt'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'القيد المحاسبي لإلغاء مؤونة (Reprise) يتضمن:',
+                fr: "L'écriture de reprise sur provision inclut :",
+                en: 'The journal entry for a provision reversal (Reprise) includes:',
+            },
+            options: {
+                ar: ['دائن لحساب مصروف', 'مدين لحساب إيراد', 'دائن لحساب إيراد', 'مدين لحساب أصل'],
+                fr: ['Un crédit à un compte de charge', 'Un débit à un compte de produit', 'Un crédit à un compte de produit', "Un débit à un compte d'actif"],
+                en: ['A credit to an expense account', 'A debit to a revenue account', 'A credit to a revenue account', 'A debit to an asset account'],
+            },
+            correctAnswerIndex: 2,
+        },
+        {
+            question: {
+                ar: 'ما الفرق الرئيسي بين المؤونة والاهتلاك؟',
+                fr: 'Quelle est la principale différence entre une provision et un amortissement ?',
+                en: 'What is the main difference between a provision and a depreciation?',
+            },
+            options: {
+                ar: ['الاهتلاك مؤكد، والمؤونة محتملة', 'المؤونة مؤكدة، والاهتلاك محتمل', 'كلاهما يتعلق بالمخزون', 'لا يوجد فرق'],
+                fr: ["L'amortissement est certain, la provision est probable", "La provision est certaine, l'amortissement est probable", "Les deux concernent les stocks", "Il n'y a pas de différence"],
+                en: ['Depreciation is certain, a provision is probable', 'A provision is certain, depreciation is probable', 'Both relate to inventory', 'There is no difference'],
+            },
+            correctAnswerIndex: 0,
+        },
+        {
+            question: {
+                ar: 'يتم تكوين مؤونة لضمانات ما بعد البيع الممنوحة للعملاء لأنها تمثل:',
+                fr: 'Une provision pour garanties accordées aux clients est constituée car elle représente :',
+                en: 'A provision for warranties given to customers is created because it represents a:',
+            },
+            options: {
+                ar: ['ربح مستقبلي مؤكد', 'خسارة مستقبلية محتملة', 'أصل غير ملموس', 'دين مؤكد'],
+                fr: ['Un gain futur certain', 'Une perte future probable', 'Un actif incorporel', 'Une dette certaine'],
+                en: ['Certain future gain', 'Probable future loss', 'Intangible asset', 'Certain liability'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'حساب المؤونة لانخفاض قيمة المخزون هو:',
+                fr: 'Le compte de provision pour dépréciation des stocks est un :',
+                en: 'The provision for inventory impairment account is a(n):',
+            },
+            options: {
+                ar: ['حساب مصروف', 'حساب أصول برصيد دائن', 'حساب إيراد', 'حساب خصوم'],
+                fr: ['Compte de charge', "Compte d'actif à solde créditeur", 'Compte de produit', 'Compte de passif'],
+                en: ['Expense account', 'Asset account with a credit balance', 'Revenue account', 'Liability account'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'عندما تفوز الشركة في دعوى قضائية كانت قد كونت لها مؤونة، يجب عليها:',
+                fr: "Lorsque l'entreprise gagne un procès pour lequel une provision avait été constituée, elle doit :",
+                en: 'When a company wins a lawsuit for which a provision was created, it must:',
+            },
+            options: {
+                ar: ['زيادة المؤونة', 'تسجيل "استرداد على المؤونة"', 'تسجيل مصروف إضافي', 'لا تفعل شيئًا'],
+                fr: ['Augmenter la provision', 'Enregistrer une "reprise sur provision"', 'Enregistrer une charge supplémentaire', 'Ne rien faire'],
+                en: ['Increase the provision', 'Record a "reversal of provision"', 'Record an additional expense', 'Do nothing'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'تسجيل "مخصص للمؤونة" (Dotation) يؤثر على نتيجة السنة المالية عن طريق:',
+                fr: "L'enregistrement d'une 'dotation aux provisions' affecte le résultat de l'exercice en :",
+                en: "Recording a 'dotation aux provisions' affects the fiscal year's profit by:",
+            },
+            options: {
+                ar: ['زيادة الإيرادات', 'تقليل المصاريف', 'زيادة المصاريف', 'زيادة الأصول'],
+                fr: ['Augmentant les produits', 'Diminuant les charges', 'Augmentant les charges', "Augmentant l'actif"],
+                en: ['Increasing revenues', 'Decreasing expenses', 'Increasing expenses', 'Increasing assets'],
+            },
+            correctAnswerIndex: 2,
+        },
+        {
+            question: {
+                ar: 'أي من المخاطر التالية لا يتطلب تكوين مؤونة؟',
+                fr: 'Lequel des risques suivants ne nécessite PAS la constitution d\'une provision ?',
+                en: 'Which of the following risks does NOT require creating a provision?',
+            },
+            options: {
+                ar: ['دعوى قضائية محتملة الخسارة', 'انخفاض محتمل في قيمة المخزون', 'خطر عام بحدوث ركود اقتصادي', 'ضمانات ممنوحة على المنتجات المباعة'],
+                fr: ['Un procès avec une perte probable', 'Une dépréciation probable des stocks', 'Un risque général de récession économique', 'Des garanties accordées sur les produits vendus'],
+                en: ['A lawsuit with a probable loss', 'A probable decrease in inventory value', 'A general risk of economic recession', 'Warranties given on products sold'],
+            },
+            correctAnswerIndex: 2,
+        },
+        {
+            question: {
+                ar: 'المؤونة هي التزام...',
+                fr: 'Une provision est un passif...',
+                en: 'A provision is a liability that is...',
+            },
+            options: {
+                ar: ['مؤكد المبلغ والتاريخ', 'محتمل، وغير مؤكد المبلغ أو التاريخ', 'دائماً طويل الأجل', 'دائماً قصير الأجل'],
+                fr: ['Certain en montant et en date', "Probable, dont le montant ou l'échéance est incertain", 'Toujours à long terme', 'Toujours à court terme'],
+                en: ['Certain in amount and date', 'Probable, and uncertain in amount or timing', 'Always long-term', 'Always short-term'],
+            },
+            correctAnswerIndex: 1,
+        },
+        {
+            question: {
+                ar: 'يتم تعديل قيمة المؤونة في نهاية كل سنة مالية لـ:',
+                fr: "Le montant d'une provision est ajusté à chaque fin d'exercice pour :",
+                en: 'The amount of a provision is adjusted at each year-end to:',
+            },
+            options: {
+                ar: ['تعكس أفضل تقدير حالي للمخاطر', 'تساوي دائمًا صفرًا', 'تتطابق مع الربح', 'توزيعها على المالكين'],
+                fr: ['Refléter la meilleure estimation actuelle du risque', 'Être toujours nulle', 'Correspondre au bénéfice', 'Être distribuée aux propriétaires'],
+                en: ['Reflect the current best estimate of the risk', 'Always be zero', 'Match the profit', 'Be distributed to owners'],
+            },
+            correctAnswerIndex: 0,
+        },
+        {
+            question: {
+                ar: 'أين تظهر المؤونات للمخاطر والأعباء في الميزانية؟',
+                fr: 'Où les provisions pour risques et charges apparaissent-elles dans le bilan ?',
+                en: 'Where do provisions for risks and charges appear on the balance sheet?',
+            },
+            options: {
+                ar: ['في الأصول', 'في الخصوم', 'في حقوق الملكية', 'لا تظهر في الميزانية'],
+                fr: ["Dans l'actif", "Dans le passif", 'Dans les capitaux propres', "Elles n'apparaissent pas au bilan"],
+                en: ['In assets', 'In liabilities', 'In equity', "They don't appear on the balance sheet"],
+            },
+            correctAnswerIndex: 1,
+        },
+    ],
+    td: {
+      problem: {
+        ar: 'في 31/12/N، رفعت دعوى قضائية ضد شركة. يقدر محاميها أن الخسارة محتملة وتقدر بـ 30,000 درهم. في السنة N+1، صدر الحكم النهائي وألزم الشركة بدفع 25,000 درهم. سجل القيود اللازمة في 31/12/N وفي السنة N+1.',
+        fr: "Au 31/12/N, un procès est intenté contre une entreprise. Son avocat estime une perte probable de 30 000 DH. En N+1, le jugement final condamne l'entreprise à payer 25 000 DH. Passez les écritures au 31/12/N et en N+1.",
+        en: 'On 12/31/N, a lawsuit is filed against a company. Its lawyer estimates a probable loss of 30,000 MAD. In year N+1, the final judgment orders the company to pay 25,000 MAD. Record the entries on 12/31/N and in year N+1.',
+      },
+      solution: {
+        ar: `**في 31/12/N (تكوين المؤونة):**
+- مدين: 6195 - Dotations aux provisions pour risques et charges: 30,000
+- دائن: 4501 - Provisions pour litiges: 30,000
+
+**في السنة N+1 (عند الدفع وإلغاء المؤونة):**
+1.  **دفع التعويض:**
+    - مدين: (حساب مصروف غير جاري مثل 6581) أو (حساب دائن متنوع 4488): 25,000
+    - دائن: 5141 - Banque: 25,000
+2.  **إلغاء المؤونة:**
+    - مدين: 4501 - Provisions pour litiges: 30,000
+    - دائن: 7195 - Reprises sur provisions pour risques et charges: 30,000`,
+        fr: `**Au 31/12/N (Constitution de la provision) :**
+- Débit : 6195 - Dotations aux provisions pour risques et charges : 30 000
+- Crédit : 4501 - Provisions pour litiges : 30 000
+
+**En N+1 (Au paiement et annulation de la provision) :**
+1.  **Paiement de l'indemnité :**
+    - Débit : (Compte de charge non courante comme 6581) ou (Compte de créditeur divers 4488) : 25 000
+    - Crédit : 5141 - Banque : 25 000
+2.  **Annulation de la provision :**
+    - Débit : 4501 - Provisions pour litiges : 30 000
+    - Crédit : 7195 - Reprises sur provisions pour risques et charges : 30 000`,
+        en: `**On 12/31/N (Creation of the provision):**
+- Debit: 6195 - Dotations aux provisions pour risques et charges: 30,000
+- Credit: 4501 - Provisions pour litiges: 30,000
+
+**In year N+1 (On payment and reversal of provision):**
+1.  **Payment of damages:**
+    - Debit: (A non-current expense account like 6581) or (a miscellaneous creditor account 4488): 25,000
+    - Credit: 5141 - Banque: 25,000
+2.  **Reversal of the provision:**
+    - Debit: 4501 - Provisions pour litiges: 30,000
+    - Credit: 7195 - Reprises sur provisions pour risques et charges: 30,000`,
+      }
+    }
+  },
 ];
