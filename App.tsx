@@ -13,26 +13,42 @@ import { LanguageProvider } from './contexts/LanguageContext';
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme === 'dark';
-    }
-    // If no theme is saved, use the user's system preference
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // If a theme is saved in localStorage, use it. Otherwise, detect system preference.
+    return savedTheme
+      ? savedTheme === 'dark'
+      : window.matchMedia?.('(prefers-color-scheme: dark)').matches;
   });
   const [currentPage, setCurrentPage] = useState<Page>(Page.Home);
 
+  // Effect to apply the theme class to <html>
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
     }
   }, [isDarkMode]);
 
+  // Effect to listen for system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      // Only update from system preference if the user hasn't manually set a theme
+      if (!('theme' in localStorage)) {
+        setIsDarkMode(e.matches);
+      }
+    };
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
   const handleThemeToggle = useCallback(() => {
-    setIsDarkMode(prev => !prev);
+    setIsDarkMode(prev => {
+      const newIsDarkMode = !prev;
+      // When user manually toggles, save the preference to override system settings
+      localStorage.setItem('theme', newIsDarkMode ? 'dark' : 'light');
+      return newIsDarkMode;
+    });
   }, []);
 
   const handlePageChange = useCallback((page: Page) => {

@@ -124,8 +124,8 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onBack, previousLesson,
         {isSolutionVisible && (
             <div className="mt-4 bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
                  <h3 className="text-lg font-semibold mb-2 text-green-800 dark:text-green-300">{t('solutionTitle')}</h3>
-                 <div className="text-green-700 dark:text-green-200 whitespace-pre-wrap prose prose-sm dark:prose-invert">
-                    <pre><code className="language-markdown">{lesson.td.solution[language]}</code></pre>
+                 <div className="text-green-700 dark:text-green-200 prose prose-sm dark:prose-invert max-w-full">
+                    {formatContent(lesson.td.solution[language])}
                  </div>
             </div>
         )}
